@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
+import 'package:netro_mart_official/screens/authScreen/signIn.dart';
 import 'package:netro_mart_official/screens/authScreen/signup.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
@@ -103,7 +104,10 @@ class MultipleLoginScreen extends StatelessWidget {
                     text: "Create an account"),
                 SizedBox(height: 12.h),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignIn()));
+                  },
                   child: Container(
                     height: 50.h,
                     width: 296.w,

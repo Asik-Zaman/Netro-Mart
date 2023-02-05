@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
+import 'package:netro_mart_official/screens/authScreen/signIn.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class SignUp extends StatefulWidget {
@@ -31,9 +32,9 @@ class _SignUpState extends State<SignUp> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child:
-                            Icon(Icons.arrow_back, color: AppColors.descColor)),
-                    SizedBox(width: 16.22.w),
+                        child: Icon(Icons.arrow_back_ios,
+                            size: 18.sp, color: AppColors.descColor)),
+                    SizedBox(width: 13.w),
                     Text(
                       "Create an account",
                       style: TextStyle(
@@ -70,7 +71,7 @@ class _SignUpState extends State<SignUp> {
                         height: 8.h,
                       ),
                       Container(
-                        height: 40.h,
+                        height: 45.h,
                         width: double.infinity,
                         child: IntlPhoneField(
                           disableLengthCheck: true,
@@ -80,8 +81,15 @@ class _SignUpState extends State<SignUp> {
                             hintText: 'Enter phone number',
                             hintStyle: TextStyle(
                                 fontSize: 12.sp, color: Color(0xff6C6C6C)),
-                            border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.r),
+                              borderSide: BorderSide(
+                                  color: Color(0xff2A9D8F), width: 1),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.r),
+                              borderSide: BorderSide(
+                                  color: Color(0xffE9F1F4), width: 1),
                             ),
                           ),
                           initialCountryCode: 'US',
@@ -199,7 +207,12 @@ class _SignUpState extends State<SignUp> {
                                 fontWeight: FontWeight.w400),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignIn()));
+                            },
                             child: Text(
                               'Sign in',
                               style: TextStyle(
@@ -233,23 +246,24 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget NewForm(String hint) {
-    return Container(
-      height: 40.h,
-      width: double.infinity,
-      child: TextField(
-        decoration: InputDecoration(
+    return TextField(
+      decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide(color: Color(0xff2A9D8F), width: 1),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide(color: Color(0xffE9F1F4), width: 1),
+          ),
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
           hintText: hint,
           hintStyle: TextStyle(
-              color: Color(0xff6C6C6C),
               fontSize: 12.sp,
-              fontWeight: FontWeight.w400),
-          fillColor: Color(0xffE9F1F4),
-          filled: false,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-        ),
-      ),
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Sora',
+              color: Color(0xff6C6C6C))),
     );
   }
 }
