@@ -45,27 +45,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             return Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32.h),
+                padding: EdgeInsets.only(bottom: 56.h, left: 32.w, right: 32.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 159.h),
+                    SizedBox(height: 140.h),
                     Container(
                         height: 245.h,
                         width: 256.w,
                         child: SvgPicture.asset(contents[i].image)),
-                    SizedBox(height: 114.h),
+                    SizedBox(height: 100.h),
                     Container(
-                        child: SizedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          contents.length,
-                          (index) => buildDot(index, context),
-                        ),
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        contents.length,
+                        (index) => buildDot(index, context),
                       ),
                     )),
                     SizedBox(height: 24.h),

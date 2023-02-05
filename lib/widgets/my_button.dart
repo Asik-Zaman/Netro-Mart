@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:netro_mart_official/appColors/app_colors.dart';
 
 class MyButton extends StatefulWidget {
   final Color color;
@@ -26,11 +25,9 @@ class _MyButtonState extends State<MyButton> {
         height: 50.h,
         width: 296.w,
         decoration: BoxDecoration(
-            color: widget.color,
-            borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(
-              color: AppColors.titleColor,
-            )),
+          color: widget.color,
+          borderRadius: BorderRadius.circular(12.r),
+        ),
         child: Center(
             child: Text(
           widget.text,
