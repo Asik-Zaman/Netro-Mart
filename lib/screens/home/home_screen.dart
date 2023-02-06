@@ -10,6 +10,7 @@ import 'package:netro_mart_official/screens/home/flash_card.dart';
 
 import 'package:netro_mart_official/screens/home/grid_card.dart';
 import 'package:netro_mart_official/screens/home/sponsord_card.dart';
+import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
 
 import '../../widgets/slider_indicator.dart';
 
@@ -167,10 +168,16 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     width: 16.w,
                   ),
-                  SizedBox(
-                      height: 21.h,
-                      width: 20.w,
-                      child: SvgPicture.asset('assets/images/heart.svg')),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Wishlist()));
+                    },
+                    child: SizedBox(
+                        height: 21.h,
+                        width: 20.w,
+                        child: SvgPicture.asset('assets/images/heart.svg')),
+                  ),
                 ],
               ),
               SizedBox(
