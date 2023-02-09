@@ -124,7 +124,77 @@ class _ShopingCartState extends State<ShopingCart> {
                                 width: 20.w,
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Dialog(
+                                          backgroundColor:
+                                              AppColors.colorPrimaryLightest,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(24.r)),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 24.w,
+                                                right: 24.w,
+                                                top: 40.h),
+                                            child: Container(
+                                              height: 318,
+                                              width: 296,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: 40,
+                                                    width: 73,
+                                                    child: Image.asset(
+                                                      'assets/images/success.png',
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 32.h,
+                                                  ),
+                                                  Container(
+                                                    height: 80.h,
+                                                    width: 248.w,
+                                                    child: Text(
+                                                      'You have successfully placed an order. We will call to verify the order. Do more than pay attention to the phone.',
+                                                      style: TextStyle(
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: AppColors
+                                                            .colorTextLow,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 32.h,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 14.w),
+                                                    child: MyButton(
+                                                        textColor:
+                                                            AppColors.white,
+                                                        color: AppColors
+                                                            .themeColor,
+                                                        onPressed: () {},
+                                                        text: "Back to home"),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                },
                                 child: Text(
                                   "Delete",
                                   style: TextStyle(

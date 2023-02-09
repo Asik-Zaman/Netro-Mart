@@ -303,290 +303,62 @@ class _CreditPaymentState extends State<CreditPayment> {
                           context: context,
                           builder: (context) {
                             return Dialog(
-                              backgroundColor: Color(0xffFFFFFF),
+                              backgroundColor: AppColors.colorPrimaryLightest,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(24.r)),
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 32.w),
+                                padding: EdgeInsets.only(
+                                    left: 24.w, right: 24.w, top: 40.h),
                                 child: Container(
-                                  height: 302.h,
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 24.h),
-                                    child: Stack(
-                                      clipBehavior: Clip.none,
-                                      children: [
-                                        Positioned(
-                                            top: -5.h,
-                                            right: -2.w,
-                                            child: InkWell(
-                                              onTap: (() =>
-                                                  Navigator.pop(context)),
-                                              child: Container(
-                                                  height: 28.h,
-                                                  width: 28.w,
-                                                  decoration: BoxDecoration(
-                                                      color: Color(0xffF7F7F7),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              55.r)),
-                                                  child: Icon(
-                                                    Icons.close,
-                                                    color: Color(0xff03053D),
-                                                  )),
-                                            )),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Delivery',
-                                              style: TextStyle(
-                                                  color: Color(0xff264653),
-                                                  fontSize: 16.sp,
-                                                  fontFamily: 'Sora',
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            SizedBox(
-                                              height: 40.h,
-                                            ),
-                                            Container(
-                                              height: 59.h,
-                                              width: 248.w,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.r),
-                                                  color: Color(0xffFFFFFF),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        blurRadius: 25,
-                                                        offset: Offset(0, 5),
-                                                        color: Color(0xff000000)
-                                                            .withOpacity(.05))
-                                                  ]),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                // crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Free Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp,
-                                                            color: Color(
-                                                                0xff264653),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      ),
-                                                      Text(
-                                                        '5-10 Day Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 10.sp,
-                                                            color: Color(
-                                                                0xff919191),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    height: 26.h,
-                                                    width: 69.w,
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xffF7F7F7),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.r)),
-                                                    child: Center(
-                                                        child: Text(
-                                                      '\$0.00',
-                                                      style: TextStyle(
-                                                          fontSize: 14.sp,
-                                                          color:
-                                                              Color(0xff264653),
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 8.h,
-                                            ),
-                                            Container(
-                                              height: 59.h,
-                                              width: 248.w,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.r),
-                                                  color: Color(0xff2A9D8F),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        blurRadius: 25,
-                                                        offset: Offset(0, 5),
-                                                        color: Color(0xff000000)
-                                                            .withOpacity(.05))
-                                                  ]),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                // crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Standard Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp,
-                                                            color: Color(
-                                                                0xffFFFFFF),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      ),
-                                                      Text(
-                                                        '3-5 Day Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 10.sp,
-                                                            color: Color(
-                                                                0xffFFFFFF),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    height: 26.h,
-                                                    width: 69.w,
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xffF7F7F7),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.r)),
-                                                    child: Center(
-                                                        child: Text(
-                                                      '\$4.99',
-                                                      style: TextStyle(
-                                                          fontSize: 14.sp,
-                                                          color:
-                                                              Color(0xff264653),
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 8.h,
-                                            ),
-                                            Container(
-                                              height: 59.h,
-                                              width: 248.w,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.r),
-                                                  color: Color(0xffFFFFFF),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        blurRadius: 25,
-                                                        offset: Offset(0, 5),
-                                                        color: Color(0xff000000)
-                                                            .withOpacity(.05))
-                                                  ]),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                // crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Express Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp,
-                                                            color: Color(
-                                                                0xff264653),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      ),
-                                                      Text(
-                                                        '1-2 Day Delivery',
-                                                        style: TextStyle(
-                                                            fontSize: 10.sp,
-                                                            color: Color(
-                                                                0xff919191),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    height: 26.h,
-                                                    width: 69.w,
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xffF7F7F7),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.r)),
-                                                    child: Center(
-                                                        child: Text(
-                                                      '\$0.00',
-                                                      style: TextStyle(
-                                                          fontSize: 14.sp,
-                                                          color: AppColors
-                                                              .colorPrimaryMain,
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    )),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ],
+                                  height: 318,
+                                  width: 296,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: 40,
+                                        width: 73,
+                                        child: Image.asset(
+                                          'assets/images/success.png',
+                                          fit: BoxFit.contain,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        height: 32.h,
+                                      ),
+                                      Container(
+                                        height: 80.h,
+                                        width: 248.w,
+                                        child: Text(
+                                          'You have successfully placed an order. We will call to verify the order. Do more than pay attention to the phone.',
+                                          style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColors.colorTextLow,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 32.h,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 14.w),
+                                        child: MyButton(
+                                            textColor: AppColors.white,
+                                            color: AppColors.themeColor,
+                                            onPressed: () {},
+                                            text: "Back to home"),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             );
                           });
+                    
                     },
                     text: "Continue"),
               ),
