@@ -33,7 +33,6 @@ class _SignInState extends State<SignIn> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isObscured = true;
   }
@@ -96,38 +95,40 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: scaffoldColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.w),
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: scaffoldColor,
+        body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 54.h,
+                height: 8.h,
               ),
-              Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.arrow_back_ios,
-                          size: 18.sp, color: AppColors.descColor)),
-                  SizedBox(width: 16.22.w),
-                  Text(
-                    "Sign in your account",
-                    style: TextStyle(
-                        color: AppColors.descColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Row(
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.arrow_back_ios,
+                            size: 18.sp, color: AppColors.descColor)),
+                    SizedBox(width: 16.22.w),
+                    Text(
+                      "Sign in your account",
+                      style: TextStyle(
+                          color: AppColors.descColor,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
-                height: 41.5.h,
+                height: 40.h,
               ),
               SizedBox(
                 height: 81.h,
@@ -148,148 +149,164 @@ class _SignInState extends State<SignIn> {
               SizedBox(
                 height: 40.h,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                    color: emailTextColor,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              getEmailField(hint: 'Enter email'),
-              SizedBox(
-                height: 8.h,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Password',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                    color: emailTextColor,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              getPasswordField(hint: 'Enter password'),
-              SizedBox(
-                height: 12.h,
-              ),
-              Row(
-                children: [
-                  Checkbox(
-                    checkColor: Colors.white,
-                    activeColor: buttonColor,
-                    value: valuefirst,
-                    onChanged: (value) {
-                      valuefirst = value;
-                      setState(() {});
-                    },
-                  ),
-                  Text(
-                    "Remember me",
-                    style: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        color: hintColor,
-                        fontFamily: "Sora"),
-                  ),
-                  SizedBox(
-                    width: 40.w,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ForgotPassword()));
-                    },
-                    child: Text(
-                      "Forgot Password",
-                      style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: buttonColor,
-                          fontFamily: "Sora"),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 26.h,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  },
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12))),
-                      backgroundColor: MaterialStateProperty.all(buttonColor),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-                          vertical: 16.h, horizontal: 24.w)),
-                      textStyle: MaterialStateProperty.all(TextStyle(
-                        fontSize: 14.sp,
-                        fontFamily: 'Sora',
-                        fontWeight: FontWeight.w600,
-                      ))),
-                  child: Text("Sign in"),
-                ),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(
-                children: [
-                  Expanded(child: Divider()),
-                  SizedBox(
-                    width: 8.w,
-                  ),
-                  Text(
-                    "OR",
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: dontAccountColor,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 8.w,
-                  ),
-                  Expanded(child: Divider()),
-                ],
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Container(
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32.w),
+                child: Column(
                   children: [
-                    SvgPicture.asset('assets/images/Google.svg'),
-                    SizedBox(width: 12.h),
-                    SvgPicture.asset('assets/images/Facebook.svg'),
-                    SizedBox(width: 12.h),
-                    SvgPicture.asset('assets/images/Apple.svg')
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: emailTextColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    getEmailField(hint: 'Enter email'),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: emailTextColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    getPasswordField(hint: 'Enter password'),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Row(
+                      children: [
+                        Checkbox(
+                          checkColor: Colors.white,
+                          activeColor: buttonColor,
+                          value: valuefirst,
+                          onChanged: (value) {
+                            valuefirst = value;
+                            setState(() {});
+                          },
+                        ),
+                        Text(
+                          "Remember me",
+                          style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              color: hintColor,
+                              fontFamily: "Sora"),
+                        ),
+                        SizedBox(
+                          width: 40.w,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPassword()));
+                          },
+                          child: Text(
+                            "Forgot Password",
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: buttonColor,
+                                fontFamily: "Sora"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 26.h,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        },
+                        style: ButtonStyle(
+                            shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12))),
+                            backgroundColor:
+                                MaterialStateProperty.all(buttonColor),
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                            padding: MaterialStateProperty.all(
+                                EdgeInsets.symmetric(
+                                    vertical: 16.h, horizontal: 24.w)),
+                            textStyle: MaterialStateProperty.all(TextStyle(
+                              fontSize: 14.sp,
+                              fontFamily: 'Sora',
+                              fontWeight: FontWeight.w600,
+                            ))),
+                        child: Text("Sign in"),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24.h,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(child: Divider()),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text(
+                          "OR",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                            color: dontAccountColor,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Expanded(child: Divider()),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 24.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 76.w),
+                      child: Container(
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/images/Google.svg'),
+                            SizedBox(width: 12.h),
+                            SvgPicture.asset('assets/images/Facebook.svg'),
+                            SizedBox(width: 12.h),
+                            SvgPicture.asset('assets/images/Apple.svg')
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 40.h,
+                height: 23.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

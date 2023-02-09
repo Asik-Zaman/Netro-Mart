@@ -14,7 +14,6 @@ class FlashCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 12.33.w),
       height: 105.h,
       width: 101.w,
       decoration: BoxDecoration(
@@ -29,11 +28,11 @@ class FlashCard extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               Color.fromARGB(255, 116, 135, 141),
-              Color.fromARGB(255, 213, 218, 220),
+              Color.fromARGB(255, 241, 244, 245),
             ],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
-            stops: [0.0, 1.0],
+            stops: [0.0, 5.0],
           )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +67,7 @@ class FlashCard extends StatelessWidget {
               width: 60.h,
               child: Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),

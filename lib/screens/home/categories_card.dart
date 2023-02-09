@@ -16,36 +16,41 @@ class CategoriesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Row(
       children: [
-        Container(
-          margin: EdgeInsets.only(right: 16),
-          height: 72,
-          width: 72,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: FittedBox(child: Image.asset(image)),
-          ),
-        ),
-        Container(
-          height: 16,
-          width: 72,
-          child: FittedBox(
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: textColor,
-                  fontFamily: "Sora",
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              height: 72,
+              width: 72,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: FittedBox(child: Image.asset(image)),
+              ),
             ),
-          ),
+            SizedBox(
+              height: 4.h,
+            ),
+            Container(
+              height: 16,
+              width: 72,
+              child: FittedBox(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

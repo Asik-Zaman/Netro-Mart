@@ -14,16 +14,17 @@ class SponsoredCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 12.33.w),
       height: 124.h,
       width: 101.w,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Color.fromARGB(255, 236, 230, 230),
-          offset: Offset(0.0, 1.0), //(x,y)
-          blurRadius: 1.0,
-        ),
-      ], borderRadius: BorderRadius.circular(8.r)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          color: Color(0xffFFFFFF),
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 25,
+                offset: Offset(0, 5),
+                color: Color(0xff000000).withOpacity(.05))
+          ]),
       child: Column(
         children: [
           Container(

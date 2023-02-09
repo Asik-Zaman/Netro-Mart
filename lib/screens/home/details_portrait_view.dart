@@ -39,64 +39,57 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffFFFFFFF),
       bottomNavigationBar: Container(
         height: 72.h,
         width: double.infinity,
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  color: Color.fromARGB(255, 244, 240, 240),
-                  blurRadius: 10,
-                  spreadRadius: 10,
-                  offset: Offset(5, 10))
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromARGB(255, 244, 240, 240),
+                blurRadius: 10,
+                spreadRadius: 10,
+                offset: Offset(5, 10))
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 40.h,
+                width: 120.w,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xff264653), width: 1),
+                    borderRadius: BorderRadius.circular(8),
+                    color: Color(0xFFFFFFFF)),
+                child: Center(
+                    child: Text(
+                  'Add to cart',
+                  style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Color(0xff264653),
+                      fontWeight: FontWeight.w600),
+                )),
+              ),
+              Container(
+                height: 40.h,
+                width: 120.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Color(0xFF2A9D8F)),
+                child: Center(
+                    child: Text(
+                  'Buy Now',
+                  style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Color(0xffFFFFFF),
+                      fontWeight: FontWeight.w600),
+                )),
+              ),
             ],
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(24.r),
-                topRight: Radius.circular(24.r))),
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.r),
-                  topRight: Radius.circular(24.r))),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 40.h,
-                  width: 120.w,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff264653), width: 1),
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFFFFFFFF)),
-                  child: Center(
-                      child: Text(
-                    'Add to cart',
-                    style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Color(0xff264653),
-                        fontWeight: FontWeight.w600),
-                  )),
-                ),
-                Container(
-                  height: 40.h,
-                  width: 120.w,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF2A9D8F)),
-                  child: Center(
-                      child: Text(
-                    'Add to cart',
-                    style: TextStyle(
-                        fontFamily: "Sora",
-                        fontSize: 12.sp,
-                        color: Color(0xffFFFFFF),
-                        fontWeight: FontWeight.w600),
-                  )),
-                ),
-              ],
-            ),
           ),
         ),
       ),
@@ -162,17 +155,14 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                 height: 158.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: Color(0xffFFFFFF),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.1),
-                      spreadRadius: 5,
-                      blurRadius: 5,
-                      offset: Offset(10, 10), // changes position of shadow
-                    ),
-                  ],
-                ),
+                    borderRadius: BorderRadius.circular(12.r),
+                    color: Color(0xffFFFFFF),
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 25,
+                          offset: Offset(0, 5),
+                          color: Color(0xff000000).withOpacity(.05))
+                    ]),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -293,7 +283,6 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                                   BorderRadius.circular(100)),
                                         ),
                                       );
-                                      ;
                                     }))),
                             SizedBox(
                               width: 16.w,
@@ -480,7 +469,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                   double.infinity),
             ),
             SizedBox(
-              height: 4.h,
+              height: 8.h,
             ),
             GestureDetector(
               onTap: () {
@@ -488,7 +477,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                     context: context,
                     builder: (context) {
                       return Dialog(
-                        backgroundColor: Color.fromARGB(255, 248, 245, 245),
+                        backgroundColor: Color(0xffFFFFFF),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24.r)),
                         child: Padding(
@@ -538,9 +527,16 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                         height: 59.h,
                                         width: 248.w,
                                         decoration: BoxDecoration(
-                                            color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(8.r)),
+                                                BorderRadius.circular(8.r),
+                                            color: Color(0xffFFFFFF),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  blurRadius: 25,
+                                                  offset: Offset(0, 5),
+                                                  color: Color(0xff000000)
+                                                      .withOpacity(.05))
+                                            ]),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
@@ -598,9 +594,16 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                         height: 59.h,
                                         width: 248.w,
                                         decoration: BoxDecoration(
-                                            color: Color(0xff2A9D8F),
                                             borderRadius:
-                                                BorderRadius.circular(8.r)),
+                                                BorderRadius.circular(8.r),
+                                            color: Color(0xff2A9D8F),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  blurRadius: 25,
+                                                  offset: Offset(0, 5),
+                                                  color: Color(0xff000000)
+                                                      .withOpacity(.05))
+                                            ]),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
@@ -658,9 +661,16 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                         height: 59.h,
                                         width: 248.w,
                                         decoration: BoxDecoration(
-                                            color: Colors.white,
                                             borderRadius:
-                                                BorderRadius.circular(8.r)),
+                                                BorderRadius.circular(8.r),
+                                            color: Color(0xffFFFFFF),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  blurRadius: 25,
+                                                  offset: Offset(0, 5),
+                                                  color: Color(0xff000000)
+                                                      .withOpacity(.05))
+                                            ]),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
@@ -720,12 +730,13 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                         ),
                       );
                     });
+              
               },
               child: buildCard('Delivery', 'Rajshahi,Rajshahi,Bangl...', 60.0,
                   double.infinity),
             ),
             SizedBox(
-              height: 4.h,
+              height: 8.h,
             ),
             GestureDetector(
               onTap: () {
@@ -880,755 +891,731 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
             SizedBox(
               height: 12.h,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 16.w),
-              child: Container(
-                  height: 205.h,
-                  width: double.infinity,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(right: 8.w),
-                        height: 182.h,
-                        width: 296.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          color: Color(0xffFFFFFF),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(.1),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(10, 10), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 8.h),
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 28.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 24.h,
-                                        width: 24.w,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(35.r),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/avatar.png'),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                      SizedBox(
-                                        width: 8.w,
-                                      ),
-                                      Container(
-                                        height: 28.h,
-                                        width: 233.w,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  height: 18.h,
-                                                  width: 144.w,
-                                                  child: Text(
-                                                    'Moutushi Parvin',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xff264653),
-                                                        fontSize: 14.sp,
-                                                        fontFamily: 'Sora',
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                                Container(
-                                                    height: 16.h,
-                                                    width: 80.w,
-                                                    child: FittedBox(
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    220,
-                                                                    211,
-                                                                    211),
-                                                            size: 18.sp,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ))
-                                              ],
-                                            ),
-                                            Container(
-                                                height: 10.h,
-                                                width: 240.w,
+            Container(
+                height: 205.h,
+                width: double.infinity,
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      blurRadius: 25,
+                      offset: Offset(0, 5),
+                      color: Color(0xff000000).withOpacity(.05))
+                ]),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: 16.w,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 12.w),
+                      height: 182.h,
+                      width: 296.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.r),
+                        color: Color(0xffFFFFFF),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 8.h),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 28.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(35.r),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/avatar.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Container(
+                                      height: 28.h,
+                                      width: 233.w,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 18.h,
+                                                width: 144.w,
                                                 child: Text(
-                                                  '26 Nov 2022',
+                                                  'Tanjima Tazreen',
                                                   style: TextStyle(
-                                                      color: Color(0xff6F6879),
-                                                      fontSize: 8.sp,
+                                                      color: Color(0xff264653),
+                                                      fontSize: 14.sp,
                                                       fontFamily: 'Sora',
                                                       fontWeight:
-                                                          FontWeight.w400),
-                                                )),
-                                          ],
-                                        ),
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                              Container(
+                                                  height: 16.h,
+                                                  width: 80.w,
+                                                  child: FittedBox(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              220,
+                                                              211,
+                                                              211),
+                                                          size: 18.sp,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ))
+                                            ],
+                                          ),
+                                          Container(
+                                              height: 10.h,
+                                              width: 240.w,
+                                              child: Text(
+                                                '26 Nov 2022',
+                                                style: TextStyle(
+                                                    color: Color(0xff6F6879),
+                                                    fontSize: 8.sp,
+                                                    fontFamily: 'Sora',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              )),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 12.h,
-                                ),
-                                Container(
-                                  height: 70.h,
-                                  width: 272.w,
-                                  child: Text(
-                                    'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
                                     ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12.h,
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 272.w,
+                                child: Text(
+                                  'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 13.h,
+                              ),
+                              SizedBox(
+                                height: 13.h,
+                              ),
+                              Container(
+                                height: 60.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 59.h,
+                                          width: 34.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe1.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 11.h, horizontal: 8.w),
+                                        child: Container(
+                                          height: 38.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/new_shoes.png'),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe3.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe4.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  height: 60.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 59.h,
-                                            width: 34.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe1.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 11.h, horizontal: 8.w),
-                                          child: Container(
-                                            height: 38.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/new_shoes.png'),
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe3.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe4.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 8.w),
-                        height: 182.h,
-                        width: 296.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          color: Color(0xffFFFFFF),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(.1),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(10, 10), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 8.h),
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 28.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 24.h,
-                                        width: 24.w,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(35.r),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/avatar.png'),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                      SizedBox(
-                                        width: 8.w,
-                                      ),
-                                      Container(
-                                        height: 28.h,
-                                        width: 233.w,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  height: 18.h,
-                                                  width: 144.w,
-                                                  child: Text(
-                                                    'Moutushi Parvin',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xff264653),
-                                                        fontSize: 14.sp,
-                                                        fontFamily: 'Sora',
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                                Container(
-                                                    height: 16.h,
-                                                    width: 80.w,
-                                                    child: FittedBox(
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    220,
-                                                                    211,
-                                                                    211),
-                                                            size: 18.sp,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ))
-                                              ],
-                                            ),
-                                            Container(
-                                                height: 10.h,
-                                                width: 240.w,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 12.w),
+                      height: 182.h,
+                      width: 296.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.r),
+                        color: Color(0xffFFFFFF),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 8.h),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 28.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(35.r),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/avatar.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Container(
+                                      height: 28.h,
+                                      width: 233.w,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 18.h,
+                                                width: 144.w,
                                                 child: Text(
-                                                  '26 Nov 2022',
+                                                  'Tanjima Tazreen',
                                                   style: TextStyle(
-                                                      color: Color(0xff6F6879),
-                                                      fontSize: 8.sp,
+                                                      color: Color(0xff264653),
+                                                      fontSize: 14.sp,
                                                       fontFamily: 'Sora',
                                                       fontWeight:
-                                                          FontWeight.w400),
-                                                )),
-                                          ],
-                                        ),
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                              Container(
+                                                  height: 16.h,
+                                                  width: 80.w,
+                                                  child: FittedBox(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              220,
+                                                              211,
+                                                              211),
+                                                          size: 18.sp,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ))
+                                            ],
+                                          ),
+                                          Container(
+                                              height: 10.h,
+                                              width: 240.w,
+                                              child: Text(
+                                                '26 Nov 2022',
+                                                style: TextStyle(
+                                                    color: Color(0xff6F6879),
+                                                    fontSize: 8.sp,
+                                                    fontFamily: 'Sora',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              )),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 12.h,
-                                ),
-                                Container(
-                                  height: 70.h,
-                                  width: 272.w,
-                                  child: Text(
-                                    'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
                                     ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12.h,
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 272.w,
+                                child: Text(
+                                  'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 13.h,
+                              ),
+                              SizedBox(
+                                height: 13.h,
+                              ),
+                              Container(
+                                height: 60.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 59.h,
+                                          width: 34.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe1.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 11.h, horizontal: 8.w),
+                                        child: Container(
+                                          height: 38.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/new_shoes.png'),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe3.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe4.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  height: 60.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 59.h,
-                                            width: 34.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe1.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 11.h, horizontal: 8.w),
-                                          child: Container(
-                                            height: 38.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/new_shoes.png'),
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe3.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe4.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(right: 8.w),
-                        height: 182.h,
-                        width: 296.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          color: Color(0xffFFFFFF),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(.1),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                              offset:
-                                  Offset(10, 10), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 8.h),
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 28.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 24.h,
-                                        width: 24.w,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(35.r),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/avatar.png'),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                      SizedBox(
-                                        width: 8.w,
-                                      ),
-                                      Container(
-                                        height: 28.h,
-                                        width: 233.w,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  height: 18.h,
-                                                  width: 144.w,
-                                                  child: Text(
-                                                    'Moutushi Parvin',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xff264653),
-                                                        fontSize: 14.sp,
-                                                        fontFamily: 'Sora',
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                                Container(
-                                                    height: 16.h,
-                                                    width: 80.w,
-                                                    child: FittedBox(
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Color(
-                                                                0xffF4A100),
-                                                            size: 18.sp,
-                                                          ),
-                                                          Icon(
-                                                            Icons.star,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    220,
-                                                                    211,
-                                                                    211),
-                                                            size: 18.sp,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ))
-                                              ],
-                                            ),
-                                            Container(
-                                                height: 10.h,
-                                                width: 240.w,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 8.w),
+                      height: 182.h,
+                      width: 296.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.r),
+                        color: Color(0xffFFFFFF),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 8.h),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 28.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 24.h,
+                                      width: 24.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(35.r),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/avatar.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Container(
+                                      height: 28.h,
+                                      width: 233.w,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 18.h,
+                                                width: 144.w,
                                                 child: Text(
-                                                  '26 Nov 2022',
+                                                  'Tanjima Tazreen',
                                                   style: TextStyle(
-                                                      color: Color(0xff6F6879),
-                                                      fontSize: 8.sp,
+                                                      color: Color(0xff264653),
+                                                      fontSize: 14.sp,
                                                       fontFamily: 'Sora',
                                                       fontWeight:
-                                                          FontWeight.w400),
-                                                )),
-                                          ],
-                                        ),
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                              Container(
+                                                  height: 16.h,
+                                                  width: 80.w,
+                                                  child: FittedBox(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color:
+                                                              Color(0xffF4A100),
+                                                          size: 18.sp,
+                                                        ),
+                                                        Icon(
+                                                          Icons.star,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              220,
+                                                              211,
+                                                              211),
+                                                          size: 18.sp,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ))
+                                            ],
+                                          ),
+                                          Container(
+                                              height: 10.h,
+                                              width: 240.w,
+                                              child: Text(
+                                                '26 Nov 2022',
+                                                style: TextStyle(
+                                                    color: Color(0xff6F6879),
+                                                    fontSize: 8.sp,
+                                                    fontFamily: 'Sora',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              )),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 12.h,
-                                ),
-                                Container(
-                                  height: 70.h,
-                                  width: 272.w,
-                                  child: Text(
-                                    'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
                                     ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12.h,
+                              ),
+                              Container(
+                                height: 70.h,
+                                width: 272.w,
+                                child: Text(
+                                  'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 13.h,
+                              ),
+                              SizedBox(
+                                height: 13.h,
+                              ),
+                              Container(
+                                height: 60.h,
+                                width: 272.w,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 59.h,
+                                          width: 34.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe1.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 11.h, horizontal: 8.w),
+                                        child: Container(
+                                          height: 38.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/new_shoes.png'),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe3.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 4.w),
+                                      height: 60.h,
+                                      width: 62.w,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xffDBDBDB),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 13.w, right: 13.w),
+                                        child: Container(
+                                          height: 60.h,
+                                          width: 45.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/shoe4.png'),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  height: 60.h,
-                                  width: 272.w,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 59.h,
-                                            width: 34.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe1.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 11.h, horizontal: 8.w),
-                                          child: Container(
-                                            height: 38.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/new_shoes.png'),
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe3.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 4.w),
-                                        height: 60.h,
-                                        width: 62.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffDBDBDB),
-                                            borderRadius:
-                                                BorderRadius.circular(8.r)),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 13.w, right: 13.w),
-                                          child: Container(
-                                            height: 60.h,
-                                            width: 45.w,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/shoe4.png'),
-                                                    fit: BoxFit.contain)),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  )),
-            ),
+                    ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                  ],
+                )),
             SizedBox(
               height: 22.h,
             ),
@@ -1672,31 +1659,27 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
               height: 12.h,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 16.w),
-              child: Container(
-                height: 147.h,
-                width: double.infinity,
-                child: Row(children: [
-                  Expanded(
-                    child: BestSellingcard(
-                        image: 'assets/images/pink_shoes1.png',
-                        price: '421.99',
-                        title: 'Running shoe'),
-                  ),
-                  Expanded(
-                    child: BestSellingcard(
-                        image: 'assets/images/black_watch.png',
-                        price: '19.99',
-                        title: 'Watch for men'),
-                  ),
-                  Expanded(
-                    child: BestSellingcard(
-                        image: 'assets/images/black_jacket1.png',
-                        price: '199.95',
-                        title: 'Coat down...'),
-                  )
-                ]),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(children: [
+                BestSellingcard(
+                    image: 'assets/images/pink_shoes1.png',
+                    price: '421.99',
+                    title: 'Running shoe'),
+                SizedBox(
+                  width: 12.w,
+                ),
+                BestSellingcard(
+                    image: 'assets/images/black_watch.png',
+                    price: '19.99',
+                    title: 'Watch for men'),
+                SizedBox(
+                  width: 12.w,
+                ),
+                BestSellingcard(
+                    image: 'assets/images/black_jacket1.png',
+                    price: '199.95',
+                    title: 'Coat down...')
+              ]),
             ),
             SizedBox(
               height: 22.h,
@@ -1709,17 +1692,14 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                 height: 226.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: Color(0xffFFFFFF),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(.1),
-                      spreadRadius: 5,
-                      blurRadius: 5,
-                      offset: Offset(10, 10), // changes position of shadow
-                    ),
-                  ],
-                ),
+                    borderRadius: BorderRadius.circular(12.r),
+                    color: Color(0xffFFFFFF),
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 25,
+                          offset: Offset(0, 5),
+                          color: Color(0xff000000).withOpacity(.05))
+                    ]),
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
@@ -1778,7 +1758,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
                     image: DecorationImage(
-                        image: AssetImage('assets/images/Banner1.png'),
+                        image: AssetImage('assets/images/Banner_middle.png'),
                         fit: BoxFit.cover)),
               ),
             ),
@@ -1806,9 +1786,8 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Recommended ',
+                    'Recommended',
                     style: TextStyle(
-                        fontFamily: "Sora",
                         fontSize: 16.sp,
                         color: Color(0xff264653),
                         fontWeight: FontWeight.w600),
@@ -1875,17 +1854,14 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
         height: height.h,
         width: width.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-          color: Color(0xffFFFFFF),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(.1),
-              spreadRadius: 5,
-              blurRadius: 5,
-              offset: Offset(10, 10), // changes position of shadow
-            ),
-          ],
-        ),
+            borderRadius: BorderRadius.circular(8.r),
+            color: Color(0xffFFFFFF),
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 25,
+                  offset: Offset(0, 5),
+                  color: Color(0xff000000).withOpacity(.05))
+            ]),
         child: Padding(
           padding: EdgeInsets.only(left: 16.w, right: 16.w),
           child: Row(
@@ -1966,17 +1942,14 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
         height: 86.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-          color: Color(0xffFFFFFF),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(.1),
-              spreadRadius: 5,
-              blurRadius: 5,
-              offset: Offset(10, 10), // changes position of shadow
-            ),
-          ],
-        ),
+            borderRadius: BorderRadius.circular(8.r),
+            color: Color(0xffFFFFFF),
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 25,
+                  offset: Offset(0, 5),
+                  color: Color(0xff000000).withOpacity(.05))
+            ]),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

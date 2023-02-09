@@ -51,11 +51,10 @@ class _GridCardState extends State<GridCard> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Container(
-        height: 588.h,
+        height: 610.h,
         width: double.infinity,
         child: GridView.builder(
           padding: EdgeInsets.zero,
-          shrinkWrap: true,
           scrollDirection: Axis.vertical,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisExtent: 190.h,
@@ -67,8 +66,15 @@ class _GridCardState extends State<GridCard> {
             return Container(
                 height: 188.h,
                 width: 158.w,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    color: Color(0xffFFFFFF),
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 25,
+                          offset: Offset(0, 5),
+                          color: Color(0xff000000).withOpacity(.05))
+                    ]),
                 child: Column(
                   children: [
                     Container(

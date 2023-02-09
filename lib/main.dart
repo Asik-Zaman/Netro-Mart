@@ -7,7 +7,7 @@ import 'package:netro_mart_official/widgets/custom_swatch.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+      SystemUiOverlayStyle(statusBarColor: Colors.grey));
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }

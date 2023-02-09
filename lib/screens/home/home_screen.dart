@@ -11,6 +11,7 @@ import 'package:netro_mart_official/screens/home/flash_card.dart';
 import 'package:netro_mart_official/screens/home/grid_card.dart';
 import 'package:netro_mart_official/screens/home/sponsord_card.dart';
 import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
+import 'package:netro_mart_official/widgets/bottom.dart';
 
 import '../../widgets/slider_indicator.dart';
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   List<String> categoryName = [
     'All',
     'Clothing',
-    'WinterSpecial',
+    'Winter Special',
     'Clothing',
     'Shoes',
     'Watches',
@@ -54,85 +55,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     //final widths = MediaQuery.of(context).size.width;
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        elevation: 10.0,
-        child: Container(
-          height: 72.h,
-          width: 360.w,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 40.h,
-                width: 40.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Color(0xFF2A9D8F)),
-                child: Center(
-                    child: Image.asset(
-                  'assets/images/nav_home.png',
-                  fit: BoxFit.contain,
-                )),
-              ),
-              Container(
-                height: 21.h,
-                width: 20.w,
-                child: Image.asset(
-                  'assets/images/nav_bell.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Container(
-                height: 21.h,
-                width: 20.w,
-                child: Image.asset(
-                  'assets/images/nav_cart.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Container(
-                height: 21.h,
-                width: 20.w,
-                child: Image.asset(
-                  'assets/images/nav_msg.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Container(
-                height: 21.h,
-                width: 20.w,
-                child: Image.asset(
-                  'assets/images/nav_profile.png',
-                  fit: BoxFit.contain,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16.w, 0.0, 8.w, 0.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 53.h,
-              ),
-              Row(
+      backgroundColor: Color(0xffFFFFFF),
+      bottomNavigationBar: BottomNav(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xffFFFFFF),
+        elevation: 0.0,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.w),
+            child: Container(
+              height: 40,
+              width: 328.w,
+              child: Row(
                 children: [
-                  SizedBox(
+                  Container(
                       height: 25.h,
                       width: 26.w,
-                      child: SvgPicture.asset('assets/images/menu.svg')),
+                      child: SvgPicture.asset(
+                        'assets/images/menu.svg',
+                        fit: BoxFit.contain,
+                      )),
                   SizedBox(
                     width: 17.w,
                   ),
-                  SizedBox(
+                  Container(
                     height: 40.h,
                     width: 210.w,
                     child: TextField(
@@ -161,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     width: 16.w,
                   ),
-                  SizedBox(
+                  Container(
                       height: 21.h,
                       width: 20.w,
                       child: SvgPicture.asset('assets/images/bell.svg')),
@@ -180,10 +127,21 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 16.h,
-              ),
-              Container(
+            ),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 19.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Container(
                 height: 144.h,
                 width: double.infinity,
                 child: PageView.builder(onPageChanged: (index) {
@@ -191,108 +149,114 @@ class _HomePageState extends State<HomePage> {
                     currentIndex = index % images.length;
                   });
                 }, itemBuilder: ((context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(right: 10.w),
-                    child: Container(
-                      height: 144.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'assets/images/Image_b.png',
-                            ),
-                            fit: BoxFit.cover,
-                          )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Nike Shoes Air Max',
-                                style: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontFamily: 'Sora',
-                                    color: Color(0xff264653),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 4.h,
-                              ),
-                              Text(
-                                'Men’s Shoes',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'Sora',
-                                    color: Color(0xff6C6C6C),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 12.h,
-                              ),
-                              ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                DetialsPortraitView()));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4.r)),
-                                      backgroundColor: Color(0xFF2A9D8F)),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 4),
-                                    child: Text(
-                                      'Shop now',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Sora',
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ))
-                            ],
+                  return Container(
+                    height: 144.h,
+                    width: 328.w,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.r),
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/images/Image_b.png',
                           ),
-                          Image(
-                            image: AssetImage('assets/images/Image.png'),
-                            fit: BoxFit.cover,
-                          )
-                        ],
-                      ),
+                          fit: BoxFit.cover,
+                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Nike Shoes Air Max',
+                              style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontFamily: 'Sora',
+                                  color: Color(0xff264653),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 4.h,
+                            ),
+                            Text(
+                              'Men’s Shoes',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontFamily: 'Sora',
+                                  color: Color(0xff6C6C6C),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 12.h,
+                            ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              DetialsPortraitView()));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(4.r)),
+                                    backgroundColor: Color(0xFF2A9D8F)),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
+                                  child: Text(
+                                    'Shop now',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Sora',
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ))
+                          ],
+                        ),
+                        Image(
+                          image: AssetImage('assets/images/Image.png'),
+                          fit: BoxFit.contain,
+                        )
+                      ],
                     ),
                   );
                 })),
               ),
-              SizedBox(
-                height: 8.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i = 0; i < images.length; i++)
+                  buildIndicator(currentIndex == i)
+              ],
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 children: [
-                  for (var i = 0; i < images.length; i++)
-                    buildIndicator(currentIndex == i)
-                ],
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Categories',
-                    style: TextStyle(
-                        fontFamily: "Sora",
-                        fontSize: 16.sp,
-                        color: emailTextColor,
-                        fontWeight: FontWeight.w600),
+                  Container(
+                    height: 21.h,
+                    width: 220.w,
+                    child: Text(
+                      'Categories',
+                      style: TextStyle(
+                          fontFamily: "Sora",
+                          fontSize: 16.sp,
+                          color: emailTextColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 30.w,
                   ),
                   Row(
                     children: [
@@ -316,11 +280,14 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              SizedBox(
-                height: 12.h,
-              ),
-              Category(),
-              Row(
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Category(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -353,35 +320,41 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 15.h,
-              ),
-              Row(
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 children: [
-                  Expanded(
-                    child: FlashCard(
-                      title: 'Nike running shoe',
-                      image: 'assets/images/new_shoes.png',
-                    ),
+                  FlashCard(
+                    title: 'Nike running shoe',
+                    image: 'assets/images/new_shoes.png',
                   ),
-                  Expanded(
-                    child: FlashCard(
-                      title: 'Smartphone',
-                      image: 'assets/images/new_phone.png',
-                    ),
+                  SizedBox(
+                    width: 12.w,
                   ),
-                  Expanded(
-                    child: FlashCard(
-                      title: 'Watch for Men',
-                      image: 'assets/images/new_watch.png',
-                    ),
+                  FlashCard(
+                    title: 'Smartphone',
+                    image: 'assets/images/new_phone.png',
+                  ),
+                  SizedBox(
+                    width: 12.w,
+                  ),
+                  FlashCard(
+                    title: 'Watch for Men',
+                    image: 'assets/images/new_watch.png',
                   )
                 ],
               ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -414,44 +387,68 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 12.h,
-              ),
-              Row(children: [
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/pink_shoes1.png',
-                      price: '421.99',
-                      title: 'Running shoe'),
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(children: [
+                BestSellingcard(
+                    image: 'assets/images/pink_shoes1.png',
+                    price: '421.99',
+                    title: 'Running shoe'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/black_watch.png',
-                      price: '19.99',
-                      title: 'Watch for men'),
+                BestSellingcard(
+                    image: 'assets/images/black_watch.png',
+                    price: '19.99',
+                    title: 'Watch for men'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/black_jacket1.png',
-                      price: '199.95',
-                      title: 'Coat down...'),
-                )
+                BestSellingcard(
+                    image: 'assets/images/black_jacket1.png',
+                    price: '199.95',
+                    title: 'Coat down...')
               ]),
-              SizedBox(
-                height: 24.h,
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Container(
+              height: 100.h,
+              width: double.infinity,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 16.w,
+                      ),
+                      BannerCard(image: 'assets/images/ban_.png'),
+                      SizedBox(
+                        width: 12.w,
+                      ),
+                      BannerCard(
+                        image: 'assets/images/Banner 2.png',
+                      ),
+                      SizedBox(
+                        width: 16.w,
+                      ),
+                    ],
+                  )
+                ],
               ),
-              Container(
-                height: 100.h,
-                width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [BannerCard(), BannerCard()],
-                ),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -484,44 +481,72 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 12.h,
-              ),
-              Row(children: [
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/pink_shoes1.png',
-                      price: '421.99',
-                      title: 'Running shoe'),
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(children: [
+                BestSellingcard(
+                    image: 'assets/images/pink_shoes1.png',
+                    price: '421.99',
+                    title: 'Running shoe'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/black_watch.png',
-                      price: '19.99',
-                      title: 'Watch for men'),
+                BestSellingcard(
+                    image: 'assets/images/black_watch.png',
+                    price: '19.99',
+                    title: 'Watch for men'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: BestSellingcard(
-                      image: 'assets/images/black_jacket1.png',
-                      price: '199.95',
-                      title: 'Coat down...'),
-                ),
+                BestSellingcard(
+                    image: 'assets/images/black_jacket1.png',
+                    price: '199.95',
+                    title: 'Coat down...'),
               ]),
-              SizedBox(
-                height: 24.h,
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Container(
+              height: 124.h,
+              width: double.infinity,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 16.w,
+                      ),
+                      CarosalBanner(image: 'assets/images/Banner_left.png'),
+                      SizedBox(
+                        width: 12.w,
+                      ),
+                      CarosalBanner(image: 'assets/images/Carosal_banner.png'),
+                      SizedBox(
+                        width: 12.w,
+                      ),
+                      CarosalBanner(
+                        image: 'assets/images/Banner_right.png',
+                      ),
+                      SizedBox(
+                        width: 16.w,
+                      ),
+                    ],
+                  )
+                ],
               ),
-              Container(
-                height: 124.h,
-                width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [CarosalBanner(), CarosalBanner(), CarosalBanner()],
-                ),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -554,58 +579,68 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Row(children: [
-                Expanded(
-                  child: SponsoredCard(
-                      image: 'assets/images/pink_shoes1.png',
-                      price: '421.99',
-                      title: 'Running shoe'),
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(children: [
+                SponsoredCard(
+                    image: 'assets/images/pink_shoes1.png',
+                    price: '421.99',
+                    title: 'Running shoe'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: SponsoredCard(
-                      image: 'assets/images/black_watch.png',
-                      price: '19.99',
-                      title: 'Watch for men'),
+                SponsoredCard(
+                    image: 'assets/images/black_watch.png',
+                    price: '19.99',
+                    title: 'Watch for men'),
+                SizedBox(
+                  width: 12.w,
                 ),
-                Expanded(
-                  child: SponsoredCard(
-                      image: 'assets/images/black_jacket1.png',
-                      price: '199.95',
-                      title: 'Coat down...'),
-                ),
+                SponsoredCard(
+                    image: 'assets/images/black_jacket1.png',
+                    price: '199.95',
+                    title: 'Coat down...'),
               ]),
-              SizedBox(
-                height: 24.h,
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Container(
+              height: 30,
+              width: double.infinity,
+              child: ListView.builder(
+                itemCount: categoryName.length,
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      SizedBox(
+                        width: 13.w,
+                      ),
+                      Text(
+                        categoryName[index],
+                        style: TextStyle(
+                            fontFamily: "Sora",
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                            color: index == 0
+                                ? Color(0xFF2A9D8F)
+                                : Color(0xFF264653)),
+                      ),
+                    ],
+                  );
+                },
+                scrollDirection: Axis.horizontal,
               ),
-              Container(
-                height: 30,
-                width: double.infinity,
-                child: ListView.builder(
-                  itemCount: categoryName.length,
-                  itemBuilder: (context, index) {
-                    return Text(
-                      categoryName[index] + "   ",
-                      style: TextStyle(
-                          fontFamily: "Sora",
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: index == 0
-                              ? Color(0xFF2A9D8F)
-                              : Color(0xFF264653)),
-                    );
-                  },
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              GridCard()
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            GridCard(),
+          ],
         ),
       ),
     );

@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import 'package:netro_mart_official/appColors/app_colors.dart';
-import 'package:netro_mart_official/screens/authScreen/verify_password.dart';
+import 'package:netro_mart_official/screens/Address/delivery.dart';
+
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class Address extends StatefulWidget {
@@ -54,7 +55,88 @@ class _AddressState extends State<Address> {
                 ),
               ),
               SizedBox(
-                height: 40.h,
+                height: 30.h,
+              ),
+              //Stepper code
+              Container(
+                height: 45.h,
+                width: 328.w,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 3.h,
+                          width: 26.w,
+                          color: Color(0xff2A9D8F),
+                        ),
+                        Container(
+                          height: 16.h,
+                          width: 16.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff2A9D8F),
+                              borderRadius: BorderRadius.circular(60.r)),
+                        ),
+                        Container(
+                          height: 3.h,
+                          width: 70.w,
+                          color: Color(0xff919191),
+                        ),
+                        Container(
+                          height: 16.h,
+                          width: 16.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff919191),
+                              borderRadius: BorderRadius.circular(60.r)),
+                        ),
+                        Container(
+                          height: 3.h,
+                          width: 70.w,
+                          color: Color(0xff919191),
+                        ),
+                        Container(
+                          height: 16.h,
+                          width: 16.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff919191),
+                              borderRadius: BorderRadius.circular(60.r)),
+                        ),
+                        Container(
+                          height: 3.h,
+                          width: 70.w,
+                          color: Color(0xff919191),
+                        ),
+                        Container(
+                          height: 16.h,
+                          width: 16.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff919191),
+                              borderRadius: BorderRadius.circular(60.r)),
+                        ),
+                        Container(
+                          height: 3.h,
+                          width: 26.w,
+                          color: Color(0xff919191),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text('Address'),
+                        Text('Delivery'),
+                        Text('Payment'),
+                        Text('Confirm'),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 30.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -226,10 +308,10 @@ class _AddressState extends State<Address> {
                         textColor: AppColors.white,
                         color: AppColors.themeColor,
                         onPressed: () {
-                          /*  Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => VerifyPassword())); */
+                                  builder: (context) => Delivery()));
                         },
                         text: "Continue"),
                   ],

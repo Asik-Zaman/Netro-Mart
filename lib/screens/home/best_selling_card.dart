@@ -14,15 +14,22 @@ class BestSellingcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 12.w),
       height: 147.h,
       width: 101.w,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          color: Color(0xffFFFFFF),
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 25,
+                offset: Offset(0, 5),
+                color: Color(0xff000000).withOpacity(.05))
+          ]),
       child: Column(
         children: [
           Container(
             height: 86.h,
-            width: 101.33.w,
+            width: 101.w,
             decoration: BoxDecoration(
               color: Color(0xffE9F1F4),
               borderRadius: BorderRadius.only(
@@ -61,7 +68,7 @@ class BestSellingcard extends StatelessWidget {
           ),
           Container(
             height: 61.h,
-            width: 101.33.w,
+            width: 101.w,
             decoration: BoxDecoration(
               color: Color(0xffFFFFFF),
               borderRadius: BorderRadius.only(

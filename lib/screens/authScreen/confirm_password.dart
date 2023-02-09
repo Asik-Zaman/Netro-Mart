@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/authScreen/forgot_password.dart';
-import 'package:netro_mart_official/screens/authScreen/signup.dart';
+
 
 class ConfirmPassword extends StatefulWidget {
   const ConfirmPassword({super.key});
@@ -34,7 +34,7 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
 
   @override
   void initState() {
-    // TODO: implement initState
+   
     super.initState();
     isObscured = true;
   }
