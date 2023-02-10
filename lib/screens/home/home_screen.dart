@@ -139,92 +139,93 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 19.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Container(
-                height: 144.h,
-                width: double.infinity,
-                child: PageView.builder(onPageChanged: (index) {
-                  setState(() {
-                    currentIndex = index % images.length;
-                  });
-                }, itemBuilder: ((context, index) {
-                  return Container(
-                    height: 144.h,
-                    width: 328.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.r),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            'assets/images/Image_b.png',
-                          ),
-                          fit: BoxFit.cover,
-                        )),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Nike Shoes Air Max',
-                              style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Sora',
-                                  color: Color(0xff264653),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
-                            Text(
-                              'Men’s Shoes',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontFamily: 'Sora',
-                                  color: Color(0xff6C6C6C),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 12.h,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetialsPortraitView()));
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.r)),
-                                    backgroundColor: Color(0xFF2A9D8F)),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 4),
-                                  child: Text(
-                                    'Shop now',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Sora',
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ))
-                          ],
+            Container(
+              height: 144.h,
+              width: double.infinity,
+              child: PageView.builder(onPageChanged: (index) {
+                setState(() {
+                  currentIndex = index % images.length;
+                });
+              }, itemBuilder: ((context, index) {
+                return Container(
+                  margin: index == 0
+                      ? EdgeInsets.only(left: 16.w, right: 16.w)
+                      : index == 1
+                          ? EdgeInsets.only(left: 16.w, right: 16.w)
+                          : EdgeInsets.only(left: 16.w, right: 16.w),
+                  height: 144.h,
+                  width: 328.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.r),
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/Image_b.png',
                         ),
-                        Image(
-                          image: AssetImage('assets/images/Image.png'),
-                          fit: BoxFit.contain,
-                        )
-                      ],
-                    ),
-                  );
-                })),
-              ),
+                        fit: BoxFit.cover,
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Nike Shoes Air Max',
+                            style: TextStyle(
+                                fontSize: 16.sp,
+                                fontFamily: 'Sora',
+                                color: Color(0xff264653),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 4.h,
+                          ),
+                          Text(
+                            'Men’s Shoes',
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontFamily: 'Sora',
+                                color: Color(0xff6C6C6C),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetialsPortraitView()));
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.r)),
+                                  backgroundColor: Color(0xFF2A9D8F)),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 4),
+                                child: Text(
+                                  'Shop now',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Sora',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ))
+                        ],
+                      ),
+                      Image(
+                        image: AssetImage('assets/images/Image.png'),
+                        fit: BoxFit.contain,
+                      )
+                    ],
+                  ),
+                );
+              })),
             ),
             SizedBox(
               height: 8.h,

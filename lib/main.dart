@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/splace/splace_screen.dart';
 import 'package:netro_mart_official/widgets/custom_swatch.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.grey));
+ 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
