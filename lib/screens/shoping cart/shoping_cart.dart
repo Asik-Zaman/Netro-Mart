@@ -147,10 +147,10 @@ class _ShopingCartState extends State<ShopingCart> {
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
-                                                    height: 40,
-                                                    width: 73,
+                                                    height: 80,
+                                                    width: 80,
                                                     child: Image.asset(
-                                                      'assets/images/success.png',
+                                                      'assets/images/delete.png',
                                                       fit: BoxFit.contain,
                                                     ),
                                                   ),
@@ -161,7 +161,7 @@ class _ShopingCartState extends State<ShopingCart> {
                                                     height: 80.h,
                                                     width: 248.w,
                                                     child: Text(
-                                                      'You have successfully placed an order. We will call to verify the order. Do more than pay attention to the phone.',
+                                                      'Would you like to remove this product from your shopping cart, or just click the delete button?.',
                                                       style: TextStyle(
                                                         fontSize: 14.sp,
                                                         fontWeight:
@@ -174,20 +174,49 @@ class _ShopingCartState extends State<ShopingCart> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    height: 32.h,
+                                                    height: 24.h,
                                                   ),
                                                   Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 14.w),
-                                                    child: MyButton(
-                                                        textColor:
-                                                            AppColors.white,
-                                                        color: AppColors
-                                                            .themeColor,
-                                                        onPressed: () {},
-                                                        text: "Back to home"),
-                                                  ),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 14.w),
+                                                      child: Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: MyButton(
+                                                                textColor:
+                                                                    AppColors
+                                                                        .white,
+                                                                color: AppColors
+                                                                    .colorStatusError,
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                                text: "Delete"),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 8.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: MyButton(
+                                                                borderColor:
+                                                                    AppColors
+                                                                        .colorSecondaryMain,
+                                                                textColor: AppColors
+                                                                    .colorSecondaryMain,
+                                                                color: AppColors
+                                                                    .colorPrimaryLightest,
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                },
+                                                                text: "Cancel"),
+                                                          ),
+                                                        ],
+                                                      )),
                                                 ],
                                               ),
                                             ),

@@ -53,10 +53,8 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    //final widths = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xffFFFFFF),
-      bottomNavigationBar: BottomNav(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xffFFFFFF),

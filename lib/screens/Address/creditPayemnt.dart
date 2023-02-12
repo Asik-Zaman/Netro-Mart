@@ -349,7 +349,9 @@ class _CreditPaymentState extends State<CreditPayment> {
                                         child: MyButton(
                                             textColor: AppColors.white,
                                             color: AppColors.themeColor,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
                                             text: "Back to home"),
                                       ),
                                     ],
@@ -358,7 +360,6 @@ class _CreditPaymentState extends State<CreditPayment> {
                               ),
                             );
                           });
-                    
                     },
                     text: "Continue"),
               ),

@@ -5,6 +5,7 @@ import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/authScreen/forgot_password.dart';
 import 'package:netro_mart_official/screens/authScreen/signup.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
+import 'package:netro_mart_official/widgets/bottom.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -239,7 +240,7 @@ class _SignInState extends State<SignIn> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => CustomBottomNav()));
                         },
                         style: ButtonStyle(
                             shape: MaterialStatePropertyAll(
