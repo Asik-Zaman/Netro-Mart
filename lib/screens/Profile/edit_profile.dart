@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import 'package:netro_mart_official/appColors/app_colors.dart';
@@ -13,12 +14,19 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  var _currentSelectedValue;
+  List gender = [
+    'Male',
+    'Female',
+  ];
+  @override
+  void initState() {
+    _currentSelectedValue = gender[0];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var gender = [
-      "Male",
-      "Female",
-    ];
     return Scaffold(
       backgroundColor: AppColors.colorTextWhiteHigh,
       body: Container(
@@ -55,14 +63,20 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(
                 height: 16,
               ),
-              Container(
-                height: 100,
-                width: 100,
-                child: Image.asset(
-                  'assets/images/profile_pic.png',
-                  fit: BoxFit.contain,
+              Stack(clipBehavior: Clip.none, children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  child: Image.asset(
+                    'assets/images/profile_pic.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
+                Positioned(
+                    top: 88,
+                    left: 40,
+                    child: SvgPicture.asset('assets/images/edit.svg'))
+              ]),
               SizedBox(
                 height: 16,
               ),
@@ -147,62 +161,41 @@ class _EditProfileState extends State<EditProfile> {
                       height: 8.h,
                     ),
                     Container(
-                      height: 45.h,
-                      width: 296.w,
-                      child: FormField(
-                        builder: (FormFieldState<String> state) {
-                          var _currentSelectedValue;
-                          return InputDecorator(
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(
-                                    color: Colors.redAccent, fontSize: 16.0),
-                                hintText: 'Please select expense',
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0))),
-                            isEmpty: _currentSelectedValue == '',
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                value: _currentSelectedValue,
-                                isDense: true,
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    gender = newValue as List<String>;
-                                    state.didChange(newValue);
-                                  });
-                                },
-                                items: gender.map((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
+                      height: 48,
+                      width: 350,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          border:
+                              Border.all(width: 1, color: Color(0xffE9F1F4))),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: Stack(children: [
+                          DropdownButton(
+                            icon: Icon(Icons.expand_more),
+                            underline: SizedBox(),
+                            hint: Text(
+                              gender[0],
+                              style: TextStyle(
+                                  color: AppColors.colorTextBlackMid,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400),
                             ),
-                          );
-                        },
+                            value: _currentSelectedValue,
+                            onChanged: ((newValue) {
+                              setState(() {
+                                _currentSelectedValue = newValue;
+                              });
+                            }),
+                            items: gender.map((val) {
+                              return DropdownMenuItem(
+                                value: val,
+                                child: Text(val),
+                              );
+                            }).toList(),
+                          ),
+                        ]),
                       ),
                     ),
-                    /* TextField(
-                      decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                            borderSide:
-                                BorderSide(color: Color(0xff2A9D8F), width: 1),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                            borderSide:
-                                BorderSide(color: Color(0xffE9F1F4), width: 1),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 12.h),
-                          hintText: 'hhh',
-                          hintStyle: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Sora',
-                              color: AppColors.colorTextBlackMid)),
-                    ), */
                     SizedBox(
                       height: 12.h,
                     ),
@@ -218,15 +211,13 @@ class _EditProfileState extends State<EditProfile> {
                         textColor: AppColors.white,
                         color: AppColors.themeColor,
                         onPressed: () {
-                          /*  Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUp())); */
+                          Navigator.pop(context);
                         },
                         text: "Update"),
                   ],
                 ),
               )
+          
             ],
           ),
         ),

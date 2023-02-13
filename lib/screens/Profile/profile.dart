@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:netro_mart_official/Profile/edit_profile.dart';
+import 'package:netro_mart_official/screens/Profile/change_Password.dart';
+import 'package:netro_mart_official/screens/Profile/edit_profile.dart';
+import 'package:netro_mart_official/screens/Profile/notification.dart';
+import 'package:netro_mart_official/screens/Profile/order_Track_Status.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 
 class Profile extends StatelessWidget {
@@ -120,8 +123,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*     Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Statement())); */
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OrderTrackStatus()));
                         },
                         child: Container(
                           child: Padding(
@@ -174,8 +179,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*  Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Support())); */
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChangePassword()));
                         },
                         child: Container(
                           child: Padding(
@@ -200,8 +207,8 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*   Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Faq())); */
+                             Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => NotificationPage())); 
                         },
                         child: Container(
                           child: Padding(

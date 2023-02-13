@@ -7,7 +7,7 @@ import 'package:netro_mart_official/widgets/custom_swatch.dart';
 
 void main() {
  
-  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

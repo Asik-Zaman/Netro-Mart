@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/home/chat_Section.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
-import 'package:netro_mart_official/Profile/profile.dart';
+import 'package:netro_mart_official/screens/Profile/profile.dart';
+import '../screens/Profile/notification.dart';
 import '../screens/shoping cart/shoping_cart.dart';
-import '../screens/home/notification.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
