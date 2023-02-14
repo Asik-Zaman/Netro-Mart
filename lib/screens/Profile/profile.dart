@@ -3,9 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/screens/Profile/change_Password.dart';
 import 'package:netro_mart_official/screens/Profile/edit_profile.dart';
+import 'package:netro_mart_official/screens/Profile/faq.dart';
 import 'package:netro_mart_official/screens/Profile/notification.dart';
 import 'package:netro_mart_official/screens/Profile/order_Track_Status.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
+import 'package:netro_mart_official/screens/Profile/privacy_Policy.dart';
+import 'package:netro_mart_official/screens/authScreen/signIn.dart';
+import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -151,10 +155,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*  Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PrivacyPolicy())); */
+                                  builder: (context) => Wishlist()));
                         },
                         child: Container(
                           child: Padding(
@@ -207,8 +211,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                             Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => NotificationPage())); 
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NotificationPage()));
                         },
                         child: Container(
                           child: Padding(
@@ -233,10 +239,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*    Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PrivacyPolicy())); */
+                                  builder: (context) => PrivacyPolicy()));
                         },
                         child: Container(
                           child: Padding(
@@ -261,10 +267,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*  Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SettingsScreen())); */
+                                  builder: (context) => FaqPage()));
                         },
                         child: Container(
                           child: Padding(
@@ -315,8 +321,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*     Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Statement())); */
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignIn()));
                         },
                         child: Container(
                           child: Padding(

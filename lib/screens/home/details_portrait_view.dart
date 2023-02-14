@@ -834,6 +834,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                                   )
                                                 ],
                                               );
+                                            
                                             }),
                                       )
                                     ],

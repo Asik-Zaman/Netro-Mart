@@ -106,10 +106,14 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     width: 16.w,
                   ),
-                  Container(
-                      height: 21.h,
-                      width: 20.w,
-                      child: SvgPicture.asset('assets/images/bell.svg')),
+                  InkWell(
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: ((context) => Wishlist()))),
+                    child: Container(
+                        height: 21.h,
+                        width: 20.w,
+                        child: SvgPicture.asset('assets/images/bell.svg')),
+                  ),
                   SizedBox(
                     width: 16.w,
                   ),
@@ -255,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(
-                    width: 30.w,
+                    width: 24.w,
                   ),
                   Row(
                     children: [
