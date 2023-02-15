@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
-import 'package:netro_mart_official/models/on_boarding_models.dart';
-import 'package:netro_mart_official/screens/Review/review_Dialog.dart';
+import 'package:netro_mart_official/screens/Review/add_Review.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -113,8 +113,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               context: context,
                               builder: (context) {
                                 return Dialog(
-                                  backgroundColor:
-                                      AppColors.colorPrimaryLightest,
+                                  backgroundColor: AppColors.colorTextWhiteHigh,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(24.r)),
@@ -128,16 +127,10 @@ class _NotificationPageState extends State<NotificationPage> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          Container(
-                                            height: 40,
-                                            width: 73,
-                                            child: Image.asset(
-                                              'assets/images/success.png',
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
+                                          SvgPicture.asset(
+                                              'assets/images/feedback_logo.svg'),
                                           SizedBox(
-                                            height: 32.h,
+                                            height: 24.h,
                                           ),
                                           Container(
                                             height: 80.h,
@@ -153,7 +146,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 32.h,
+                                            height: 24.h,
                                           ),
                                           Padding(
                                             padding: EdgeInsets.symmetric(
@@ -162,7 +155,11 @@ class _NotificationPageState extends State<NotificationPage> {
                                                 textColor: AppColors.white,
                                                 color: AppColors.themeColor,
                                                 onPressed: () {
-                                                  Navigator.of(context).pop();
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: ((context) =>
+                                                              AddReview())));
                                                 },
                                                 text: "Give your feedback"),
                                           ),

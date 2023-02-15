@@ -730,7 +730,6 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                         ),
                       );
                     });
-              
               },
               child: buildCard('Delivery', 'Rajshahi,Rajshahi,Bangl...', 60.0,
                   double.infinity),
@@ -834,7 +833,6 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                                   )
                                                 ],
                                               );
-                                            
                                             }),
                                       )
                                     ],
@@ -1032,7 +1030,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                 width: 272.w,
                                 child: Text(
                                   'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                  textAlign: TextAlign.start,
+                                  textAlign: TextAlign.justify,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                   ),
@@ -1142,6 +1140,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                         ),
                       ),
                     ),
+                   
                     Container(
                       margin: EdgeInsets.only(right: 12.w),
                       height: 182.h,
@@ -1267,7 +1266,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                 width: 272.w,
                                 child: Text(
                                   'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                  textAlign: TextAlign.start,
+                                  textAlign: TextAlign.justify,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                   ),
@@ -1502,7 +1501,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                 width: 272.w,
                                 child: Text(
                                   'Quality Product with Reasonable Price. Same Price e Market Available Product theke Onk valo. Super Fast Delivery,Thanks Seller😍',
-                                  textAlign: TextAlign.start,
+                                  textAlign: TextAlign.justify,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                   ),

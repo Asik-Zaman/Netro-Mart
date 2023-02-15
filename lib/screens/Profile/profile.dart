@@ -8,6 +8,7 @@ import 'package:netro_mart_official/screens/Profile/notification.dart';
 import 'package:netro_mart_official/screens/Profile/order_Track_Status.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/Profile/privacy_Policy.dart';
+import 'package:netro_mart_official/screens/Support/chat_Page.dart';
 import 'package:netro_mart_official/screens/authScreen/signIn.dart';
 import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
 
@@ -295,8 +296,10 @@ class Profile extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          /*     Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Statement())); */
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChatPage()));
                         },
                         child: Container(
                           child: Padding(
