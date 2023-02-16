@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
-import 'package:netro_mart_official/screens/home/chat_Section.dart';
+import 'package:netro_mart_official/screens/Support/chat_Page.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
 import 'package:netro_mart_official/screens/Profile/profile.dart';
 import '../screens/Profile/notification.dart';
@@ -21,7 +21,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
     HomePage(),
     NotificationPage(),
     ShopingCart(),
-    Chat(),
+    ChatPage(),
     Profile(),
   ];
   @override

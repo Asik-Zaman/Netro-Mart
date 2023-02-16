@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/authScreen/signIn.dart';
 import 'package:netro_mart_official/screens/authScreen/signup.dart';
+import 'package:netro_mart_official/screens/home/home_screen.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class MultipleLoginScreen extends StatelessWidget {
@@ -12,16 +13,19 @@ class MultipleLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.w),
+      backgroundColor: AppColors.colorTextWhiteHigh,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 32.w),
+        child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 136.h,
+                ),
                 Container(
                     height: 122.91.h,
                     width: 122.w,
@@ -61,11 +65,27 @@ class MultipleLoginScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset('assets/images/Google.svg'),
+                      InkWell(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child: SvgPicture.asset('assets/images/Google.svg')),
                       SizedBox(width: 12.h),
-                      SvgPicture.asset('assets/images/Facebook.svg'),
+                      InkWell(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child:
+                              SvgPicture.asset('assets/images/Facebook.svg')),
                       SizedBox(width: 12.h),
-                      SvgPicture.asset('assets/images/Apple.svg')
+                      InkWell(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child: SvgPicture.asset('assets/images/Apple.svg'))
                     ],
                   ),
                 ),
