@@ -56,3 +56,73 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+/*Container(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: ToggleButtons(
+                    isSelected: isSelected,
+                    color: AppColors.colorSecondaryMain,
+                    renderBorder: false,
+                    children: <Widget>[
+                      Text(
+                        '   All ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        'Clothing ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Winter Special ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Clothing ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Shoes ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Clothing ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Clothing ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Shoes ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '  Clothing      ',
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                    onPressed: (int newIndex) {
+                      setState(() {
+                        for (int index = 0;
+                            index < isSelected.length;
+                            index++) {
+                          if (index == newIndex) {
+                            isSelected[index] = true;
+                          } else {
+                            isSelected[index] = false;
+                          }
+                        }
+                      });
+                    },
+                  ),
+                ),
+              ), */

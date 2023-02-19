@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/authScreen/signIn.dart';
+import 'package:netro_mart_official/screens/home/home_screen.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class SignUp extends StatefulWidget {
@@ -14,6 +15,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool isEnable = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +32,9 @@ class _SignUpState extends State<SignUp> {
                 },
                 child: Icon(Icons.arrow_back_ios,
                     size: 18.sp, color: AppColors.descColor)),
-            SizedBox(width: 13.w),
+            SizedBox(width: 16.22.w),
             Text(
-              "Create an account",
+              "Sign in your account",
               style: TextStyle(
                   color: AppColors.descColor,
                   fontSize: 16.sp,
@@ -52,6 +54,9 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 16.h,
+                ),
                 NewText('Full Name'),
                 SizedBox(
                   height: 8.h,
@@ -133,26 +138,23 @@ class _SignUpState extends State<SignUp> {
                   height: 40.h,
                 ),
                 Center(
-                  child: InkWell(
-                    onTap: () {},
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text: 'By signing up you agree to our',
-                          style: TextStyle(
-                              color: Color(0xff303952),
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: ' Privacy Policy and Terms',
-                              style: TextStyle(
-                                  color: Color(0xffFF7A00),
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400),
-                            )
-                          ]),
-                    ),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: 'By signing up you agree to our',
+                        style: TextStyle(
+                            color: Color(0xff303952),
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: ' Privacy Policy and Terms',
+                            style: TextStyle(
+                                color: Color(0xffFF7A00),
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400),
+                          )
+                        ]),
                   ),
                 ),
                 SizedBox(
@@ -161,7 +163,11 @@ class _SignUpState extends State<SignUp> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(child: Divider()),
+                    Expanded(
+                        child: Divider(
+                      thickness: 1.5,
+                      color: AppColors.colorTextWhiteLow,
+                    )),
                     SizedBox(
                       width: 8.w,
                     ),
@@ -176,7 +182,9 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(
                       width: 8.w,
                     ),
-                    Expanded(child: Divider()),
+                    Expanded(
+                        child: Divider(
+                            thickness: 1.5, color: AppColors.colorTextWhiteLow)),
                   ],
                 ),
                 SizedBox(
@@ -187,11 +195,32 @@ class _SignUpState extends State<SignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset('assets/images/Google.svg'),
+                      GestureDetector(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child: Container(
+                              child: SvgPicture.asset(
+                                  'assets/images/Google.svg'))),
                       SizedBox(width: 12.h),
-                      SvgPicture.asset('assets/images/Facebook.svg'),
+                      GestureDetector(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child: Container(
+                              child: SvgPicture.asset(
+                                  'assets/images/Facebook.svg'))),
                       SizedBox(width: 12.h),
-                      SvgPicture.asset('assets/images/Apple.svg')
+                      GestureDetector(
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage())),
+                          child: Container(
+                              child:
+                                  SvgPicture.asset('assets/images/Apple.svg'))),
                     ],
                   ),
                 ),
@@ -246,6 +275,10 @@ class _SignUpState extends State<SignUp> {
     return TextField(
       obscureText: obs,
       decoration: InputDecoration(
+          // filled: true,
+          // fillColor: isEnable
+          //     ? AppColors.colorPrimaryLightest
+          //     : AppColors.colorTextWhiteHigh,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.r),
             borderSide: BorderSide(color: Color(0xff2A9D8F), width: 1),

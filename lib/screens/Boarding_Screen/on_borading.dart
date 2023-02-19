@@ -55,8 +55,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     return Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 32.w, right: 32.w),
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 32.w, right: 32.w, bottom: 56.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
