@@ -13,6 +13,7 @@ class Delivery extends StatefulWidget {
 }
 
 class _DeliveryState extends State<Delivery> {
+  int selectedCategoryIndex = 0;
   bool? valuefirst = false;
   final buttonColor = Color(0xff2A9D8F);
 
@@ -20,316 +21,283 @@ class _DeliveryState extends State<Delivery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.colorTextWhiteHigh,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back_ios,
+                    size: 18.sp, color: AppColors.descColor)),
+            SizedBox(width: 13.w),
+            Text(
+              "Delivery",
+              style: TextStyle(
+                  color: AppColors.descColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Color(0xffFFFFFF),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: ((OverscrollIndicatorNotification? notification) {
+          notification!.disallowIndicator();
+          return true;
+        }),
         child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 53.h,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 13.w),
-                child: Row(
+          child: Container(
+            margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 56.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 24.h,
+                ),
+                //Stepper code
+                Container(
+                  height: 45.h,
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 3.h,
+                            width: 26.w,
+                            color: Color(0xff2A9D8F),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff2A9D8F),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff2A9D8F),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff2A9D8F),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff919191),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff919191),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff919191),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff919191),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 26.w,
+                            color: Color(0xff919191),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text('Address'),
+                          Text('Delivery'),
+                          Text('Payment'),
+                          Text('Confirm'),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    InkWell(
+                    for (int x = 1; x <= 3; x++) ...[
+                      GestureDetector(
                         onTap: () {
-                          Navigator.pop(context);
+                          setState(() {
+                            selectedCategoryIndex = x;
+                          });
                         },
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 18.sp, color: AppColors.descColor)),
-                    SizedBox(width: 13.w),
-                    Text(
-                      "Delivery",
-                      style: TextStyle(
-                          color: AppColors.descColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              //Stepper code
-              Container(
-                height: 45.h,
-                width: 328.w,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 3.h,
-                          width: 26.w,
-                          color: Color(0xff2A9D8F),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
+                        child: Container(
+                          margin: EdgeInsets.only(bottom: 8.h),
+                          height: 59.h,
+                          width: 328.w,
                           decoration: BoxDecoration(
-                              color: Color(0xff2A9D8F),
-                              borderRadius: BorderRadius.circular(60.r)),
+                              borderRadius: BorderRadius.circular(8.r),
+                              color: selectedCategoryIndex == x
+                                  ? AppColors.colorPrimaryMain
+                                  : AppColors.colorTextWhiteHigh,
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 25,
+                                    offset: Offset(0, 5),
+                                    color: Color(0xff000000).withOpacity(.05))
+                              ]),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Free Delivery',
+                                      style: TextStyle(
+                                          color: selectedCategoryIndex == x
+                                              ? AppColors.colorTextWhiteHigh
+                                              : AppColors.colorSecondaryMain,
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      '5-10 Day Delivery',
+                                      style: TextStyle(
+                                          fontSize: 10.sp,
+                                          color: selectedCategoryIndex == x
+                                              ? AppColors.colorTextWhiteHigh
+                                              : AppColors.colorTextLow,
+                                          fontWeight: FontWeight.w400),
+                                    )
+                                  ],
+                                ),
+                                Container(
+                                  height: 26.h,
+                                  width: 69.w,
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffF7F7F7),
+                                      borderRadius: BorderRadius.circular(8.r)),
+                                  child: Center(
+                                      child: Text(
+                                    '\$0.00',
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: selectedCategoryIndex == x
+                                            ? AppColors.colorPrimaryMain
+                                            : AppColors.colorSecondaryMain,
+                                        fontWeight: FontWeight.w600),
+                                  )),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff2A9D8F),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff2A9D8F),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff919191),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff919191),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff919191),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff919191),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 26.w,
-                          color: Color(0xff919191),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
+
+                    // Container(
+                    //   height: 59.h,
+                    //   width: 328.w,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(8.r),
+                    //       color: Color(0xff2A9D8F),
+                    //       boxShadow: [
+                    //         BoxShadow(
+                    //             blurRadius: 25,
+                    //             offset: Offset(0, 5),
+                    //             color: Color(0xff2A9D8F).withOpacity(.05))
+                    //       ]),
+                    //   child: Padding(
+                    //     padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //       // crossAxisAlignment: CrossAxisAlignment.stretch,
+                    //       children: [
+                    //         Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           mainAxisAlignment: MainAxisAlignment.center,
+                    //           children: [
+                    //             Text(
+                    //               'Standard Delivery',
+                    //               style: TextStyle(
+                    //                   fontSize: 14.sp,
+                    //                   color: Color(0xffFFFFFF),
+                    //                   fontWeight: FontWeight.w600),
+                    //             ),
+                    //             Text(
+                    //               '3-5 Day Delivery',
+                    //               style: TextStyle(
+                    //                   fontSize: 10.sp,
+                    //                   color: Color(0xffFFFFFF),
+                    //                   fontWeight: FontWeight.w400),
+                    //             )
+                    //           ],
+                    //         ),
+                    //         Container(
+                    //           height: 26.h,
+                    //           width: 69.w,
+                    //           decoration: BoxDecoration(
+                    //               color: Color(0xffF7F7F7),
+                    //               borderRadius: BorderRadius.circular(8.r)),
+                    //           child: Center(
+                    //               child: Text(
+                    //             '\$4.99',
+                    //             style: TextStyle(
+                    //                 fontSize: 14.sp,
+                    //                 color: Color(0xff264653),
+                    //                 fontWeight: FontWeight.w600),
+                    //           )),
+                    //         )
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+
                     SizedBox(
-                      height: 10.h,
+                      height: 8.h,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('Address'),
-                        Text('Delivery'),
-                        Text('Payment'),
-                        Text('Confirm'),
-                      ],
-                    )
+
+                    SizedBox(
+                      height: 305.h,
+                    ),
+                    MyButton(
+                        textColor: AppColors.white,
+                        color: AppColors.themeColor,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Payment()));
+                        },
+                        text: "Continue"),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 59.h,
-                    width: 328.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: Color(0xffFFFFFF),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 25,
-                              offset: Offset(0, 5),
-                              color: Color(0xff000000).withOpacity(.05))
-                        ]),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Free Delivery',
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: Color(0xff264653),
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                '5-10 Day Delivery',
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    color: Color(0xff919191),
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                          Container(
-                            height: 26.h,
-                            width: 69.w,
-                            decoration: BoxDecoration(
-                                color: Color(0xffF7F7F7),
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: Center(
-                                child: Text(
-                              '\$0.00',
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Color(0xff264653),
-                                  fontWeight: FontWeight.w600),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  Container(
-                    height: 59.h,
-                    width: 328.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: Color(0xff2A9D8F),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 25,
-                              offset: Offset(0, 5),
-                              color: Color(0xff2A9D8F).withOpacity(.05))
-                        ]),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Standard Delivery',
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: Color(0xffFFFFFF),
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                '3-5 Day Delivery',
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    color: Color(0xffFFFFFF),
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                          Container(
-                            height: 26.h,
-                            width: 69.w,
-                            decoration: BoxDecoration(
-                                color: Color(0xffF7F7F7),
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: Center(
-                                child: Text(
-                              '\$4.99',
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Color(0xff264653),
-                                  fontWeight: FontWeight.w600),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  Container(
-                    height: 59.h,
-                    width: 328.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: Color(0xffFFFFFF),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 25,
-                              offset: Offset(0, 5),
-                              color: Color(0xff000000).withOpacity(.05))
-                        ]),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Express Delivery',
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: Color(0xff264653),
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                '1-2 Day Delivery',
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    color: Color(0xff919191),
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                          Container(
-                            height: 26.h,
-                            width: 69.w,
-                            decoration: BoxDecoration(
-                                color: Color(0xffF7F7F7),
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: Center(
-                                child: Text(
-                              '\$0.00',
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Color(0xff264653),
-                                  fontWeight: FontWeight.w600),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 305.h,
-                  ),
-                  MyButton(
-                      textColor: AppColors.white,
-                      color: AppColors.themeColor,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Payment()));
-                      },
-                      text: "Continue"),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

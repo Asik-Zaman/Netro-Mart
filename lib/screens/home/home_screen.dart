@@ -369,35 +369,20 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(4.r)),
                               child: Container(
                                 margin: EdgeInsets.all(1),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      x == 1
-                                          ? "$days"
-                                          : x == 2
-                                              ? "$hours"
-                                              : x == 3
-                                                  ? "$minutes"
-                                                  : "$seconds",
-                                      style: TextStyle(
-                                          fontSize: 8.sp,
-                                          color: buttonColor,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    Text(
-                                      x == 1
-                                          ? "Days"
-                                          : x == 2
-                                              ? "Hou"
-                                              : x == 3
-                                                  ? "Min"
-                                                  : "Sec",
-                                      style: TextStyle(
-                                          fontSize: 8.sp,
-                                          color: AppColors.colorSecondaryMain,
-                                          fontWeight: FontWeight.w400),
-                                    )
-                                  ],
+                                child: Center(
+                                  child: Text(
+                                    x == 1
+                                        ? "$days"
+                                        : x == 2
+                                            ? "$hours"
+                                            : x == 3
+                                                ? "$minutes"
+                                                : "$seconds",
+                                    style: TextStyle(
+                                        fontSize: 10.sp,
+                                        color: buttonColor,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                               )),
                         ],

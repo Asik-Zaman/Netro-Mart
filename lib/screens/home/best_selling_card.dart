@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:netro_mart_official/appColors/app_colors.dart';
 
-class BestSellingcard extends StatelessWidget {
+class BestSellingcard extends StatefulWidget {
   final String title;
   final String image;
   final String price;
@@ -10,6 +11,18 @@ class BestSellingcard extends StatelessWidget {
       required this.title,
       required this.image,
       required this.price});
+
+  @override
+  State<BestSellingcard> createState() => _BestSellingcardState();
+}
+
+class _BestSellingcardState extends State<BestSellingcard> {
+  bool _isFavorited = false;
+  void _toggleFavorite() {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +57,20 @@ class BestSellingcard extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding: EdgeInsets.only(right: 10.w),
-                    child: Container(
-                      height: 9.24.h,
-                      width: 10.w,
-                      child: Icon(
-                        Icons.favorite_border,
-                        size: 15,
-                        color: Colors.grey,
+                    child: GestureDetector(
+                      onTap: () => _toggleFavorite(),
+                      child: Container(
+                        height: 9.24.h,
+                        width: 10.w,
+                        child: Icon(
+                          _isFavorited
+                              ? Icons.favorite
+                              : Icons.favorite_outline,
+                          size: 15,
+                          color: _isFavorited == true
+                              ? AppColors.colorStatusError
+                              : Colors.grey,
+                        ),
                       ),
                     ),
                   ),
@@ -59,7 +79,7 @@ class BestSellingcard extends StatelessWidget {
                   height: 60.h,
                   width: 60.w,
                   child: Image.asset(
-                    image,
+                    widget.image,
                     fit: BoxFit.contain,
                   ),
                 )
@@ -131,7 +151,7 @@ class BestSellingcard extends StatelessWidget {
                     children: [
                       FittedBox(
                         child: Text(
-                          '\$${price}',
+                          '\$${widget.price}',
                           style: TextStyle(
                               fontSize: 10.sp,
                               color: Color(0xff2A9D8F),

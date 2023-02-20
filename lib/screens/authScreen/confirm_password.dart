@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/authScreen/forgot_password.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
+import 'package:netro_mart_official/widgets/bottom.dart';
 
 class ConfirmPassword extends StatefulWidget {
   const ConfirmPassword({super.key});
@@ -232,8 +233,10 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
                   width: double.infinity,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CustomBottomNav()));
                     },
                     style: ButtonStyle(
                         shape: MaterialStatePropertyAll(RoundedRectangleBorder(

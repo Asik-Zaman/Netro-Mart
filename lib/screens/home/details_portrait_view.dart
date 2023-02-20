@@ -13,6 +13,32 @@ class DetialsPortraitView extends StatefulWidget {
 }
 
 class _DetialsPortraitViewState extends State<DetialsPortraitView> {
+  final ScrollController _scrollController = ScrollController();
+  int _selectedRating = 0;
+  List<Color> _starColors = [
+    Colors.grey,
+    Colors.grey,
+    Colors.grey,
+    Colors.grey,
+    Colors.grey,
+  ];
+
+  void _updateRating(int rating) {
+    setState(() {
+      // toggle the color of the selected star
+      if (_selectedRating == rating) {
+        _selectedRating = 0;
+        _starColors = List.filled(5, Colors.grey);
+      } else {
+        _selectedRating = rating;
+        _starColors = List.generate(
+            5,
+            (index) =>
+                index < rating ? AppColors.colorStatusAlert : Colors.grey);
+      }
+    });
+  }
+
   bool isSelected = false;
   int selectedColorIndex = 0;
   List<Map<dynamic, dynamic>> colorList = [
@@ -302,7 +328,9 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                               Container(
                                 height: 24.h,
                                 width: 104.w,
+                                padding: EdgeInsets.only(left: 10.w),
                                 child: DropdownButton<String>(
+                                  underline: Container(),
                                   value: dropdownValue,
                                   onChanged: (String? newValue) {
                                     setState(() {
@@ -736,9 +764,9 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.r)),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 32.w),
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Container(
-                              height: 281.h,
+                              height: 330.h,
                               width: double.infinity,
                               child: Padding(
                                 padding: EdgeInsets.only(top: 24.h),
@@ -779,52 +807,93 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                           height: 30.h,
                                         ),
                                         Expanded(
-                                          child: ListView.builder(
-                                              itemCount: DataSource
-                                                  .questionAnswer.length,
-                                              itemBuilder: (context, index) {
-                                                return Column(
-                                                  children: [
-                                                    ExpansionTile(
-                                                      title: Text(
-                                                        DataSource
-                                                                .questionAnswer[
-                                                            index]['question'],
-                                                        style: TextStyle(
-                                                            color: Color(
-                                                                0xff6F6879),
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      ),
-                                                      children: <Widget>[
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(20.0),
-                                                          child: Text(
-                                                            DataSource
-                                                                    .questionAnswer[
-                                                                index]['answer'],
+                                          child: NotificationListener<
+                                              OverscrollIndicatorNotification>(
+                                            onNotification:
+                                                ((OverscrollIndicatorNotification?
+                                                    notification) {
+                                              notification!.disallowIndicator();
+                                              return true;
+                                            }),
+                                            child: ListView.builder(
+                                                controller: _scrollController,
+                                                padding: EdgeInsets.zero,
+                                                itemCount: DataSource
+                                                    .questionAnswer.length,
+                                                itemBuilder: (context, index) {
+                                                  return Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Theme(
+                                                        data: ThemeData().copyWith(
+                                                            dividerColor: Colors
+                                                                .transparent),
+                                                        child: ExpansionTile(
+                                                          title: Text(
+                                                            DataSource.questionAnswer[
+                                                                    index]
+                                                                ['question'],
                                                             style: TextStyle(
-                                                                color: Color(
-                                                                    0xff6C6C6C),
-                                                                fontSize: 10.sp,
+                                                                color: AppColors
+                                                                    .colorTextGreyPurpleLow,
+                                                                fontSize: 12.sp,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w400),
+                                                                        .w600),
                                                           ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Divider(
-                                                      thickness: 1,
-                                                      color: Color(0xffF7F7F7),
-                                                    )
-                                                  ],
-                                                );
-                                              }),
+                                                          children: <Widget>[
+                                                            Container(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          16.w),
+                                                              child: Text(
+                                                                DataSource.questionAnswer[
+                                                                        index]
+                                                                    ['answer'],
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .justify,
+                                                                style: TextStyle(
+                                                                    color: Color(
+                                                                        0xff6C6C6C),
+                                                                    fontSize:
+                                                                        10.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                            )
+                                                          ],
+                                                          onExpansionChanged:
+                                                              (expanded) {
+                                                            if (expanded) {
+                                                              _scrollController
+                                                                  .animateTo(
+                                                                _scrollController
+                                                                    .position
+                                                                    .maxScrollExtent,
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        300),
+                                                                curve: Curves
+                                                                    .easeIn,
+                                                              );
+                                                            }
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Divider(
+                                                        thickness: 2,
+                                                        color: AppColors
+                                                            .colorTextWhiteMid,
+                                                      )
+                                                    ],
+                                                  );
+                                                }),
+                                          ),
                                         )
                                       ],
                                     ),
@@ -925,7 +994,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                               image: DecorationImage(
                                                   image: AssetImage(
                                                       'assets/images/avatar.png'),
-                                                  fit: BoxFit.cover)),
+                                                  fit: BoxFit.contain)),
                                         ),
                                         SizedBox(
                                           width: 8.w,
@@ -959,40 +1028,24 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                                       child: FittedBox(
                                                         child: Row(
                                                           children: [
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Color(
-                                                                  0xffF4A100),
-                                                              size: 18.sp,
-                                                            ),
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Color(
-                                                                  0xffF4A100),
-                                                              size: 18.sp,
-                                                            ),
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Color(
-                                                                  0xffF4A100),
-                                                              size: 18.sp,
-                                                            ),
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Color(
-                                                                  0xffF4A100),
-                                                              size: 18.sp,
-                                                            ),
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      220,
-                                                                      211,
-                                                                      211),
-                                                              size: 18.sp,
-                                                            ),
+                                                            for (int x = 1;
+                                                                x <= 5;
+                                                                x++) ...[
+                                                              Container(
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () =>
+                                                                      _updateRating(
+                                                                          x),
+                                                                  child: Icon(
+                                                                    Icons.star,
+                                                                    color: _starColors[
+                                                                        x - 1],
+                                                                    size: 18.sp,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ],
                                                         ),
                                                       ))
@@ -1039,95 +1092,31 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                                     width: 272.w,
                                     child: Row(
                                       children: [
-                                        Container(
-                                          margin: EdgeInsets.only(right: 4.w),
-                                          height: 60.h,
-                                          width: 62.w,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffDBDBDB),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r)),
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 13.w, right: 13.w),
-                                            child: Container(
-                                              height: 59.h,
-                                              width: 34.w,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/shoe1.png'),
-                                                      fit: BoxFit.contain)),
+                                        for (int x = 1; x <= 4; x++) ...[
+                                          Container(
+                                            margin: EdgeInsets.only(right: 4.w),
+                                            height: 60.h,
+                                            width: 62.w,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffDBDBDB),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r)),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 11.h,
+                                                  horizontal: 8.w),
+                                              child: Container(
+                                                height: 38.h,
+                                                width: 45.w,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/images/new_shoes.png'),
+                                                        fit: BoxFit.contain)),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(right: 4.w),
-                                          height: 60.h,
-                                          width: 62.w,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffDBDBDB),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r)),
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 11.h,
-                                                horizontal: 8.w),
-                                            child: Container(
-                                              height: 38.h,
-                                              width: 45.w,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/new_shoes.png'),
-                                                      fit: BoxFit.cover)),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(right: 4.w),
-                                          height: 60.h,
-                                          width: 62.w,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffDBDBDB),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r)),
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 13.w, right: 13.w),
-                                            child: Container(
-                                              height: 60.h,
-                                              width: 45.w,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/shoe3.png'),
-                                                      fit: BoxFit.contain)),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(right: 4.w),
-                                          height: 60.h,
-                                          width: 62.w,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffDBDBDB),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r)),
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 13.w, right: 13.w),
-                                            child: Container(
-                                              height: 60.h,
-                                              width: 45.w,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/shoe4.png'),
-                                                      fit: BoxFit.contain)),
-                                            ),
-                                          ),
-                                        ),
+                                        ],
                                       ],
                                     ),
                                   ),
@@ -1228,7 +1217,7 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                       ]),
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -1247,7 +1236,9 @@ class _DetialsPortraitViewState extends State<DetialsPortraitView> {
                         ),
                         Text(
                           'Lorem ipsum dolor sit amet consectetur. Potenti vitae mauris feugiat faucibus viverra aliquet enim. Risus eget velit pretium vitae id viverra libero. Congue elementum sed tortor commodo nisi et orci\n.Reflective details\n.Not intended for use as Personal Protective Equipment (PPE)\n.Shown: Scream Green/Coconut Milk/Black\n.Style: DZ4776-343',
+                          textAlign: TextAlign.justify,
                           style: TextStyle(
+                              height: 1.3,
                               color: Color(0xff6C6C6C),
                               fontSize: 12.sp,
                               fontFamily: 'Sora',

@@ -95,7 +95,6 @@ class _FaqPageState extends State<FaqPage> {
                             data: ThemeData()
                                 .copyWith(dividerColor: Colors.transparent),
                             child: ExpansionTile(
-                              initiallyExpanded: index == 1 ? true : false,
                               title: Text(
                                 questionAnswer[index]['question'],
                                 style: TextStyle(
