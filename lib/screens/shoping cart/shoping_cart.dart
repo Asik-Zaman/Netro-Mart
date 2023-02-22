@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/Address/address.dart';
+import 'package:netro_mart_official/screens/Address/step_Example.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
 
 class ShopingCart extends StatefulWidget {
@@ -238,7 +239,6 @@ class _ShopingCartState extends State<ShopingCart> {
                                             ),
                                           );
                                         });
-                                  
                                   },
                                   child: Text(
                                     "Delete",
@@ -1011,8 +1011,10 @@ class _ShopingCartState extends State<ShopingCart> {
                     textColor: AppColors.white,
                     color: AppColors.themeColor,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Address()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
                     },
                     text: "Checkout"),
               ],

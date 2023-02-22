@@ -218,69 +218,6 @@ class _DeliveryState extends State<Delivery> {
                         ),
                       ),
                     ],
-
-                    // Container(
-                    //   height: 59.h,
-                    //   width: 328.w,
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(8.r),
-                    //       color: Color(0xff2A9D8F),
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //             blurRadius: 25,
-                    //             offset: Offset(0, 5),
-                    //             color: Color(0xff2A9D8F).withOpacity(.05))
-                    //       ]),
-                    //   child: Padding(
-                    //     padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    //     child: Row(
-                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //       // crossAxisAlignment: CrossAxisAlignment.stretch,
-                    //       children: [
-                    //         Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           mainAxisAlignment: MainAxisAlignment.center,
-                    //           children: [
-                    //             Text(
-                    //               'Standard Delivery',
-                    //               style: TextStyle(
-                    //                   fontSize: 14.sp,
-                    //                   color: Color(0xffFFFFFF),
-                    //                   fontWeight: FontWeight.w600),
-                    //             ),
-                    //             Text(
-                    //               '3-5 Day Delivery',
-                    //               style: TextStyle(
-                    //                   fontSize: 10.sp,
-                    //                   color: Color(0xffFFFFFF),
-                    //                   fontWeight: FontWeight.w400),
-                    //             )
-                    //           ],
-                    //         ),
-                    //         Container(
-                    //           height: 26.h,
-                    //           width: 69.w,
-                    //           decoration: BoxDecoration(
-                    //               color: Color(0xffF7F7F7),
-                    //               borderRadius: BorderRadius.circular(8.r)),
-                    //           child: Center(
-                    //               child: Text(
-                    //             '\$4.99',
-                    //             style: TextStyle(
-                    //                 fontSize: 14.sp,
-                    //                 color: Color(0xff264653),
-                    //                 fontWeight: FontWeight.w600),
-                    //           )),
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-
-                    SizedBox(
-                      height: 8.h,
-                    ),
-
                     SizedBox(
                       height: 305.h,
                     ),

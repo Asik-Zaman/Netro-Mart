@@ -28,54 +28,57 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.colorTextWhiteHigh,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: 16.w),
-          physics: BouncingScrollPhysics(),
-          child: Column(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.colorTextWhiteHigh,
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: Row(
             children: [
-              SizedBox(
-                height: 53.h,
+              InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios,
+                      size: 16.sp, color: AppColors.descColor)),
+              SizedBox(width: 13.w),
+              Text(
+                "Change Password",
+                style: TextStyle(
+                    color: AppColors.descColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 16.w),
-                child: Row(
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 16.sp, color: AppColors.descColor)),
-                    SizedBox(width: 13.w),
-                    Text(
-                      "Change Password",
-                      style: TextStyle(
-                          color: AppColors.descColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
+            ],
+          ),
+        ),
+      ),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: ((OverscrollIndicatorNotification? notification) {
+          notification!.disallowIndicator();
+          return true;
+        }),
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.only(left: 32.w, right: 32.w, bottom: 54.h),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                child: SvgPicture.asset(
-                  'assets/images/change_pass.svg',
-                  fit: BoxFit.contain,
+                Container(
+                  height: 100,
+                  width: 100,
+                  child: SvgPicture.asset(
+                    'assets/images/change_pass.svg',
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
+                SizedBox(
+                  height: 40,
+                ),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NewText('Old Password'),
@@ -132,11 +135,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        text: "Update"),
+                        text: "Update password"),
                   ],
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

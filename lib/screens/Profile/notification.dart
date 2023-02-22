@@ -54,140 +54,245 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.colorTextWhiteHigh,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 53.h,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 16.w),
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.arrow_back_ios,
-                          size: 16.sp, color: AppColors.descColor)),
-                  SizedBox(width: 13.w),
-                  Text(
-                    "Notifications",
-                    style: TextStyle(
-                        color: AppColors.descColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.colorTextWhiteHigh,
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: Row(
+            children: [
+              InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios,
+                      size: 16.sp, color: AppColors.descColor)),
+              SizedBox(width: 13.w),
+              Text(
+                "Notifications",
+                style: TextStyle(
+                    color: AppColors.descColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600),
               ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Container(
-              height: 635.h,
-              width: double.infinity,
-              child: ListView.builder(
-                  padding: EdgeInsets.only(top: 16.h),
-                  physics: AlwaysScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: wishItems.length,
-                  itemBuilder: ((context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              bottom: 16.h, left: 16.w, right: 16.w),
-                          child: Text(
-                            wishItems[index]['date'],
-                            style: TextStyle(
-                                color: AppColors.colorTextBlackMid,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () => showDialog(
-                              context: context,
-                              builder: (context) {
-                                return Dialog(
-                                  backgroundColor: AppColors.colorTextWhiteHigh,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(24.r)),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 24.w, right: 24.w, top: 40.h),
-                                    child: Container(
-                                      height: 318,
-                                      width: 296,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          SvgPicture.asset(
-                                              'assets/images/feedback_logo.svg'),
-                                          SizedBox(
-                                            height: 24.h,
-                                          ),
-                                          Container(
-                                            height: 80.h,
-                                            width: 248.w,
-                                            child: Text(
-                                              'Your product is successfully delivered just as you wished. Please give us your feedback.',
-                                              style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: AppColors.colorTextLow,
+            ],
+          ),
+        ),
+      ),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: ((OverscrollIndicatorNotification? notification) {
+          notification!.disallowIndicator();
+          return true;
+        }),
+        child: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                Container(
+                  height: 635.h,
+                  width: double.infinity,
+                  child: ListView.builder(
+                      padding: EdgeInsets.only(top: 16.h),
+                      physics: AlwaysScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: wishItems.length,
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: 16.h, left: 16.w, right: 16.w),
+                              child: Text(
+                                wishItems[index]['date'],
+                                style: TextStyle(
+                                    color: AppColors.colorTextBlackMid,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () => showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      backgroundColor:
+                                          AppColors.colorTextWhiteHigh,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(24.r)),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 24.w, right: 24.w, top: 40.h),
+                                        child: Container(
+                                          height: 318,
+                                          width: 296,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              SvgPicture.asset(
+                                                  'assets/images/feedback_logo.svg'),
+                                              SizedBox(
+                                                height: 24.h,
                                               ),
-                                              textAlign: TextAlign.justify,
-                                            ),
+                                              Container(
+                                                height: 80.h,
+                                                width: 248.w,
+                                                child: Text(
+                                                  'Your product is successfully delivered just as you wished. Please give us your feedback.',
+                                                  style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color:
+                                                        AppColors.colorTextLow,
+                                                  ),
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 24.h,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 14.w),
+                                                child: MyButton(
+                                                    textColor: AppColors.white,
+                                                    color: AppColors.themeColor,
+                                                    onPressed: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: ((context) =>
+                                                                  AddReview())));
+                                                    },
+                                                    text: "Give your feedback"),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(
-                                            height: 24.h,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 14.w),
-                                            child: MyButton(
-                                                textColor: AppColors.white,
-                                                color: AppColors.themeColor,
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: ((context) =>
-                                                              AddReview())));
-                                                },
-                                                text: "Give your feedback"),
-                                          ),
-                                        ],
+                                        ),
                                       ),
+                                    );
+                                  }),
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    bottom: 8.h, left: 16.w, right: 16.w),
+                                height: 78.h,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 25,
+                                          offset: Offset(0, 5),
+                                          color: Color(0xff000000)
+                                              .withOpacity(.05))
+                                    ]),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 8.w, vertical: 8.h),
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 52.6.h,
+                                          width: 60.w,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      wishItems[index]
+                                                              ['content'][0]
+                                                          ['image']),
+                                                  fit: BoxFit.contain)),
+                                        ),
+                                        SizedBox(
+                                          width: 16.w,
+                                        ),
+                                        Container(
+                                          width: 208.w,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                wishItems[index]['content'][0]
+                                                        ['title']
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    color: AppColors
+                                                        .colorTextBlackHigh,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 12.sp),
+                                              ),
+                                              SizedBox(
+                                                height: 4.h,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    wishItems[index]['content']
+                                                            [0]['discount']
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: AppColors
+                                                            .colorTextBlackHigh,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 10.sp),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 40.w,
+                                                  ),
+                                                  Text(
+                                                    wishItems[index]['content']
+                                                            [0]['timeStamp']
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: AppColors
+                                                            .colorTextLow,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 10.sp),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.close,
+                                          color:
+                                              AppColors.colorTextGreyPurpleLow,
+                                        )
+                                      ],
                                     ),
                                   ),
-                                );
-                              }),
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                bottom: 8.h, left: 16.w, right: 16.w),
-                            height: 78.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.r),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 25,
-                                      offset: Offset(0, 5),
-                                      color: Color(0xff000000).withOpacity(.05))
-                                ]),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 8.w, vertical: 8.h),
-                              child: GestureDetector(
-                                onTap: () {},
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: 8.h, left: 16.w, right: 16.w),
+                              height: 78.h,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 25,
+                                        offset: Offset(0, 5),
+                                        color:
+                                            Color(0xff000000).withOpacity(.05))
+                                  ]),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8.w, vertical: 8.h),
                                 child: Row(
                                   children: [
                                     Container(
@@ -196,7 +301,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(wishItems[index]
-                                                  ['content'][0]['image']),
+                                                  ['content'][1]['image']),
                                               fit: BoxFit.contain)),
                                     ),
                                     SizedBox(
@@ -211,7 +316,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            wishItems[index]['content'][0]
+                                            wishItems[index]['content'][1]
                                                     ['title']
                                                 .toString(),
                                             style: TextStyle(
@@ -226,7 +331,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                           Row(
                                             children: [
                                               Text(
-                                                wishItems[index]['content'][0]
+                                                wishItems[index]['content'][1]
                                                         ['discount']
                                                     .toString(),
                                                 style: TextStyle(
@@ -239,7 +344,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                                 width: 40.w,
                                               ),
                                               Text(
-                                                wishItems[index]['content'][0]
+                                                wishItems[index]['content'][1]
                                                         ['timeStamp']
                                                     .toString(),
                                                 style: TextStyle(
@@ -261,99 +366,13 @@ class _NotificationPageState extends State<NotificationPage> {
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              bottom: 8.h, left: 16.w, right: 16.w),
-                          height: 78.h,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.r),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 25,
-                                    offset: Offset(0, 5),
-                                    color: Color(0xff000000).withOpacity(.05))
-                              ]),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 8.w, vertical: 8.h),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 52.6.h,
-                                  width: 60.w,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(wishItems[index]
-                                              ['content'][1]['image']),
-                                          fit: BoxFit.contain)),
-                                ),
-                                SizedBox(
-                                  width: 16.w,
-                                ),
-                                Container(
-                                  width: 208.w,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        wishItems[index]['content'][1]['title']
-                                            .toString(),
-                                        style: TextStyle(
-                                            color: AppColors.colorTextBlackHigh,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 12.sp),
-                                      ),
-                                      SizedBox(
-                                        height: 4.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            wishItems[index]['content'][1]
-                                                    ['discount']
-                                                .toString(),
-                                            style: TextStyle(
-                                                color: AppColors
-                                                    .colorTextBlackHigh,
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 10.sp),
-                                          ),
-                                          SizedBox(
-                                            width: 40.w,
-                                          ),
-                                          Text(
-                                            wishItems[index]['content'][1]
-                                                    ['timeStamp']
-                                                .toString(),
-                                            style: TextStyle(
-                                                color: AppColors.colorTextLow,
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 10.sp),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.close,
-                                  color: AppColors.colorTextGreyPurpleLow,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  })),
+                          ],
+                        );
+                      })),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

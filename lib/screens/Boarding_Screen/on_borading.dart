@@ -35,29 +35,32 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
-        backgroundColor: AppColors.white,
         body: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: ((OverscrollIndicatorNotification? notification) {
             notification!.disallowIndicator();
             return true;
           }),
-          child: Stack(
-            children: [
-              PageView.builder(
-                  controller: _controller,
-                  onPageChanged: (int index) {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
-                  itemCount: contents.length,
-                  itemBuilder: (_, i) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: 32.w, right: 32.w, bottom: 56.h),
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+              AppColors.colorGradientStart,
+              AppColors.colorGradientEnd,
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+            margin: EdgeInsets.only(bottom: 56.h),
+            child: Stack(
+              children: [
+                PageView.builder(
+                    controller: _controller,
+                    onPageChanged: (int index) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                    itemCount: contents.length,
+                    itemBuilder: (_, i) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -81,14 +84,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               ),
                             ),
                             SizedBox(height: 16.h),
-                            Text(
-                              contents[i].discription,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  height: 1.2,
-                                  color: AppColors.descColor,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400),
+                            Container(
+                              margin: EdgeInsets.symmetric(horizontal: 45.w),
+                              child: Text(
+                                contents[i].discription,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    height: 1.2,
+                                    color: AppColors.descColor,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             ),
                             SizedBox(height: 40.h),
                             Container(
@@ -124,23 +130,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             ),
                           ],
                         ),
-                      ),
-                    );
-                  }),
-              Positioned(
-                left: 100.w,
-                right: 100.w,
-                top: 480.h,
-                child: Container(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    contents.length,
-                    (index) => buildDot(index, context),
-                  ),
-                )),
-              ),
-            ],
+                      );
+                    }),
+                Positioned(
+                  left: 100.w,
+                  right: 100.w,
+                  top: 460.h,
+                  child: Container(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      contents.length,
+                      (index) => buildDot(index, context),
+                    ),
+                  )),
+                ),
+              ],
+            ),
           ),
         ),
       ),

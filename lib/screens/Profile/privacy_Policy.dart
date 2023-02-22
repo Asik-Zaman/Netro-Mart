@@ -67,7 +67,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
               ),
             ),
             SizedBox(
-              height: 40.h,
+              height: 24.h,
             ),
             Container(
               height: 635.h,

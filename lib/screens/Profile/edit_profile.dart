@@ -29,80 +29,80 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.colorTextWhiteHigh,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: 16.w),
-          physics: BouncingScrollPhysics(),
-          child: Column(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.colorTextWhiteHigh,
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: Row(
             children: [
-              SizedBox(
-                height: 53.h,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 16.w),
-                child: Row(
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 16.sp, color: AppColors.descColor)),
-                    SizedBox(width: 13.w),
-                    Text(
-                      "Edit Profile",
-                      style: TextStyle(
-                          color: AppColors.descColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Stack(clipBehavior: Clip.none, children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  child: Image.asset(
-                    'assets/images/profile_pic.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Positioned(
-                    top: 88,
-                    left: 40,
-                    child: SvgPicture.asset('assets/images/edit.svg'))
-              ]),
-              SizedBox(
-                height: 16,
-              ),
+              InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios,
+                      size: 16.sp, color: AppColors.descColor)),
+              SizedBox(width: 13.w),
               Text(
-                'John Smith',
+                "Edit Profile",
                 style: TextStyle(
-                    color: AppColors.colorPrimaryMain,
+                    color: AppColors.descColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                'user@website.com',
-                style: TextStyle(
-                    color: AppColors.colorTextLow,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400),
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
+            ],
+          ),
+        ),
+      ),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: ((OverscrollIndicatorNotification? notification) {
+          notification!.disallowIndicator();
+          return true;
+        }),
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.only(left: 32.w, right: 32.w, bottom: 54.h),
+            child: Column(
+              children: [
+                Stack(clipBehavior: Clip.none, children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset(
+                      'assets/images/profile_pic.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  Positioned(
+                      top: 88,
+                      left: 40,
+                      child: SvgPicture.asset('assets/images/edit.svg'))
+                ]),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'John Smith',
+                  style: TextStyle(
+                      color: AppColors.colorPrimaryMain,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'user@website.com',
+                  style: TextStyle(
+                      color: AppColors.colorTextLow,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400),
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NewText('Full Name'),
@@ -138,13 +138,13 @@ class _EditProfileState extends State<EditProfile> {
                               fontSize: 12.sp, color: Color(0xff6C6C6C)),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.r),
-                            borderSide:
-                                BorderSide(color: Color(0xff2A9D8F), width: 1),
+                            borderSide: BorderSide(
+                                color: Color(0xff2A9D8F), width: 1),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.r),
-                            borderSide:
-                                BorderSide(color: Color(0xffE9F1F4), width: 1),
+                            borderSide: BorderSide(
+                                color: Color(0xffE9F1F4), width: 1),
                           ),
                         ),
                         initialCountryCode: 'US',
@@ -215,10 +215,9 @@ class _EditProfileState extends State<EditProfile> {
                         },
                         text: "Update"),
                   ],
-                ),
-              )
-          
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

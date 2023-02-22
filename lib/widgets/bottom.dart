@@ -134,9 +134,11 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             ),
             InkWell(
               enableFeedback: false,
-              onTap: () => setState(() {
-                pageIndex = 3;
-              }),
+              onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChatPage(),
+                  )),
               child: Container(
                 height: 40,
                 width: 40,

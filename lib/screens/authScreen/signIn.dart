@@ -121,7 +121,7 @@ class _SignInState extends State<SignIn> {
         }),
         child: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(left: 32.w, right: 32.w, bottom: 68.h),
+            margin: EdgeInsets.only(left: 32.w, right: 32.w, bottom: 63.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -227,7 +227,6 @@ class _SignInState extends State<SignIn> {
                         ),
                       ],
                     ),
-                    
                     SizedBox(
                       height: 26.h,
                     ),
@@ -300,32 +299,32 @@ class _SignInState extends State<SignIn> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           GestureDetector(
-                          onTap: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage())),
-                          child: Container(
-                              child: SvgPicture.asset(
-                                  'assets/images/Google.svg'))),
-                      SizedBox(width: 12.h),
-                      GestureDetector(
-                          onTap: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage())),
-                          child: Container(
-                              child: SvgPicture.asset(
-                                  'assets/images/Facebook.svg'))),
-                      SizedBox(width: 12.h),
-                      GestureDetector(
-                          onTap: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage())),
-                          child: Container(
-                              child:
-                                  SvgPicture.asset('assets/images/Apple.svg'))),
+                            GestureDetector(
+                                onTap: () => Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage())),
+                                child: Container(
+                                    child: SvgPicture.asset(
+                                        'assets/images/Google.svg'))),
+                            SizedBox(width: 12.h),
+                            GestureDetector(
+                                onTap: () => Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage())),
+                                child: Container(
+                                    child: SvgPicture.asset(
+                                        'assets/images/Facebook.svg'))),
+                            SizedBox(width: 12.h),
+                            GestureDetector(
+                                onTap: () => Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage())),
+                                child: Container(
+                                    child: SvgPicture.asset(
+                                        'assets/images/Apple.svg'))),
                           ],
                         ),
                       ),

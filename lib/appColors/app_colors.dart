@@ -22,6 +22,9 @@ class AppColors {
   static const colorPrimaryLight = Color(0xff40C3B3);
   static const colorPrimaryLighter = Color(0xffC8FFF8);
   static const colorPrimaryLightest = Color(0xffF1FFFD);
+  static const colorGradientStart = Color(0xffDDFFFB);
+  static const colorGradientEnd = Color(0xffFFFFFF);
+  // DDFFFB
 
   //For Secondary Color
   static const colorSecondaryMain = Color(0xff264653);

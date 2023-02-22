@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:netro_mart_official/Provider/timer_Provider.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/home/banner.dart';
 import 'package:netro_mart_official/screens/home/best_selling_card.dart';
@@ -15,6 +16,7 @@ import 'package:netro_mart_official/screens/home/grid_card.dart';
 import 'package:netro_mart_official/screens/home/sponsord_card.dart';
 import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
 import 'package:netro_mart_official/widgets/bottom.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/slider_indicator.dart';
 
@@ -56,6 +58,7 @@ class _HomePageState extends State<HomePage> {
     'Clothing',
     'Winter Special',
   ];
+
   Timer? countdownTimer;
   Duration myDuration = Duration(days: 12);
   @override
@@ -94,6 +97,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //final calc = Provider.of<TimerProvider>(context);
     String strDigits(int n) => n.toString().padLeft(2, '0');
     final days = strDigits(myDuration.inDays);
     final hours = strDigits(myDuration.inHours.remainder(24));
@@ -370,18 +374,22 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 margin: EdgeInsets.all(1),
                                 child: Center(
-                                  child: Text(
-                                    x == 1
-                                        ? "$days"
-                                        : x == 2
-                                            ? "$hours"
-                                            : x == 3
-                                                ? "$minutes"
-                                                : "$seconds",
-                                    style: TextStyle(
-                                        fontSize: 10.sp,
-                                        color: buttonColor,
-                                        fontWeight: FontWeight.w600),
+                                  child: Consumer<TimerProvider>(
+                                    builder: (context, value, child) {
+                                      return Text(
+                                        x == 1
+                                            ? "$days"
+                                            : x == 2
+                                                ? "$hours"
+                                                : x == 3
+                                                    ? "$minutes"
+                                                    : "$seconds",
+                                        style: TextStyle(
+                                            fontSize: 10.sp,
+                                            color: buttonColor,
+                                            fontWeight: FontWeight.w600),
+                                      );
+                                    },
                                   ),
                                 ),
                               )),

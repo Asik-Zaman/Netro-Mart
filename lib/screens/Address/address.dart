@@ -23,125 +23,126 @@ class _AddressState extends State<Address> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffFFFFFF),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.colorTextWhiteHigh,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back_ios,
+                    size: 18.sp, color: AppColors.descColor)),
+            SizedBox(width: 13.w),
+            Text(
+              "Address",
+              style: TextStyle(
+                  color: AppColors.descColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: ((OverscrollIndicatorNotification? notification) {
+          notification!.disallowIndicator();
+          return true;
+        }),
         child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 53.h,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 13.w),
-                child: Row(
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 18.sp, color: AppColors.descColor)),
-                    SizedBox(width: 13.w),
-                    Text(
-                      "Address",
-                      style: TextStyle(
-                          color: AppColors.descColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
+          child: Container(
+            margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 56.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 24.h,
                 ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              //Stepper code
-              Container(
-                height: 45.h,
-                width: 328.w,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 3.h,
-                          width: 26.w,
-                          color: Color(0xff2A9D8F),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff2A9D8F),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff919191),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff919191),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff919191),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff919191),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 70.w,
-                          color: Color(0xff919191),
-                        ),
-                        Container(
-                          height: 16.h,
-                          width: 16.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff919191),
-                              borderRadius: BorderRadius.circular(60.r)),
-                        ),
-                        Container(
-                          height: 3.h,
-                          width: 26.w,
-                          color: Color(0xff919191),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('Address'),
-                        Text('Delivery'),
-                        Text('Payment'),
-                        Text('Confirm'),
-                      ],
-                    )
-                  ],
+                //Stepper code
+                Container(
+                  height: 45.h,
+                  width: 328.w,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 3.h,
+                            width: 26.w,
+                            color: Color(0xff2A9D8F),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff2A9D8F),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff919191),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff919191),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff919191),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff919191),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 70.w,
+                            color: Color(0xff919191),
+                          ),
+                          Container(
+                            height: 16.h,
+                            width: 16.h,
+                            decoration: BoxDecoration(
+                                color: Color(0xff919191),
+                                borderRadius: BorderRadius.circular(60.r)),
+                          ),
+                          Container(
+                            height: 3.h,
+                            width: 26.w,
+                            color: Color(0xff919191),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text('Address'),
+                          Text('Delivery'),
+                          Text('Payment'),
+                          Text('Confirm'),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-             
-              SizedBox(
-                height: 30.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Column(
+
+                SizedBox(
+                  height: 30.h,
+                ),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NewText('Full Name'),
@@ -303,22 +304,25 @@ class _AddressState extends State<Address> {
                       ],
                     ),
                     SizedBox(
-                      height: 102.h,
+                      height: 60.h,
                     ),
-                    MyButton(
-                        textColor: AppColors.white,
-                        color: AppColors.themeColor,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Delivery()));
-                        },
-                        text: "Continue"),
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 16.w),
+                      child: MyButton(
+                          textColor: AppColors.white,
+                          color: AppColors.themeColor,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Delivery()));
+                          },
+                          text: "Continue"),
+                    ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
