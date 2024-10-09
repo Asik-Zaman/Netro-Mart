@@ -1,11 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:netro_mart_official/Utils/custom_snackbar.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
+import 'package:netro_mart_official/models/user_login_model.dart';
 import 'package:netro_mart_official/screens/authScreen/forgot_password.dart';
 import 'package:netro_mart_official/screens/authScreen/signup.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
 import 'package:netro_mart_official/widgets/bottom.dart';
+import 'package:provider/provider.dart';
+
+import '../../Provider/auth_provider.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -31,9 +38,43 @@ class _SignInState extends State<SignIn> {
     isObscured = true;
   }
 
-  Widget getEmailField({required String hint}) {
-    return TextField(
-      obscureText: true,
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  GlobalKey<FormState>? _formKeyLogin;
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  _postUserData() async {
+    log('User Login');
+    UserLoginModel userLoginModel = UserLoginModel();
+    String phone = _phoneController.text.trim();
+    String password = _passwordController.text.trim();
+    if (phone.isEmpty) {
+      showCustomSnackBar('Enter phone', context);
+    } else if (password.length < 6) {
+      showCustomSnackBar('Password should be greater than 6', context);
+    } else {
+      userLoginModel.phoneNumber = phone;
+      userLoginModel.password = password;
+
+      await Provider.of<AuthProvider>(context, listen: false)
+          .userLogin(context, userLoginModel)
+          .then((status) async {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => CustomBottomNav()));
+      });
+    }
+  }
+
+  Widget getEmailField(
+      {required String hint, required TextEditingController controller}) {
+    return TextFormField(
+      controller: controller,
+      obscureText: false,
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.r),
@@ -54,8 +95,10 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget getPasswordField({required String hint}) {
-    return TextField(
+  Widget getPasswordField(
+      {required String hint, required TextEditingController controller}) {
+    return TextFormField(
+      controller: controller,
       obscureText: isObscured,
       decoration: InputDecoration(
           suffixIcon: IconButton(
@@ -152,7 +195,7 @@ class _SignInState extends State<SignIn> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Email',
+                        'Phone',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w600,
@@ -163,7 +206,9 @@ class _SignInState extends State<SignIn> {
                     SizedBox(
                       height: 8.h,
                     ),
-                    getEmailField(hint: 'Enter email'),
+                    getEmailField(
+                        hint: 'Enter phone number',
+                        controller: _phoneController),
                     SizedBox(
                       height: 8.h,
                     ),
@@ -181,7 +226,9 @@ class _SignInState extends State<SignIn> {
                     SizedBox(
                       height: 12.h,
                     ),
-                    getPasswordField(hint: 'Enter password'),
+                    getPasswordField(
+                        hint: 'Enter password',
+                        controller: _passwordController),
                     SizedBox(
                       height: 12.h,
                     ),
@@ -234,10 +281,7 @@ class _SignInState extends State<SignIn> {
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CustomBottomNav()));
+                          _postUserData();
                         },
                         style: ButtonStyle(
                             shape: MaterialStatePropertyAll(
@@ -255,7 +299,11 @@ class _SignInState extends State<SignIn> {
                               fontFamily: 'Sora',
                               fontWeight: FontWeight.w600,
                             ))),
-                        child: Text("Sign in"),
+                        child: Consumer<AuthProvider>(
+                            builder: (context, value, child) {
+                          return Text(
+                              value.isLoading ? "Loading..." : "Sign in");
+                        }),
                       ),
                     ),
                     SizedBox(

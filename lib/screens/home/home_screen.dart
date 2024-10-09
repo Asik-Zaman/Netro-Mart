@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:netro_mart_official/Provider/category_provider.dart';
 import 'package:netro_mart_official/Provider/timer_Provider.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
 import 'package:netro_mart_official/screens/home/banner.dart';
@@ -15,7 +16,6 @@ import 'package:netro_mart_official/screens/home/flash_card.dart';
 import 'package:netro_mart_official/screens/home/grid_card.dart';
 import 'package:netro_mart_official/screens/home/sponsord_card.dart';
 import 'package:netro_mart_official/screens/wishlist/wishlist.dart';
-import 'package:netro_mart_official/widgets/bottom.dart';
 import 'package:provider/provider.dart';
 
 import '../../widgets/slider_indicator.dart';
@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
   Duration myDuration = Duration(days: 12);
   @override
   void initState() {
+    Provider.of<CategoryProvider>(context, listen: false).getCategoryList();
     startTimer();
     super.initState();
   }
@@ -71,17 +72,6 @@ class _HomePageState extends State<HomePage> {
     countdownTimer =
         Timer.periodic(Duration(seconds: 1), (_) => setCountDown());
   }
-
-  // // Step 4
-  // void stopTimer() {
-  //   setState(() => countdownTimer!.cancel());
-  // }
-
-  // // Step 5
-  // void resetTimer() {
-  //   stopTimer();
-  //   setState(() => myDuration = Duration(days: 5));
-  // }
 
   void setCountDown() {
     final reduceSecondsBy = 1;
@@ -97,7 +87,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //final calc = Provider.of<TimerProvider>(context);
     String strDigits(int n) => n.toString().padLeft(2, '0');
     final days = strDigits(myDuration.inDays);
     final hours = strDigits(myDuration.inHours.remainder(24));
@@ -298,22 +287,18 @@ class _HomePageState extends State<HomePage> {
                 height: 24.h,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 21.h,
-                      width: 220.w,
                       child: Text(
                         'Categories',
                         style: TextStyle(
-                            fontSize: 16.sp,
+                            fontSize: 16,
                             color: emailTextColor,
                             fontWeight: FontWeight.w600),
                       ),
-                    ),
-                    SizedBox(
-                      width: 24.w,
                     ),
                     Row(
                       children: [
@@ -337,12 +322,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 12.h,
-              ),
               Category(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -420,7 +402,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 12.h,
+                height: 16.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),

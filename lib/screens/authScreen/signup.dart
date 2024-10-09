@@ -1,11 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:netro_mart_official/Provider/auth_provider.dart';
+import 'package:netro_mart_official/Utils/custom_snackbar.dart';
 import 'package:netro_mart_official/appColors/app_colors.dart';
+import 'package:netro_mart_official/models/user_registration_post_model.dart';
 import 'package:netro_mart_official/screens/authScreen/signIn.dart';
 import 'package:netro_mart_official/screens/home/home_screen.dart';
 import 'package:netro_mart_official/widgets/my_button.dart';
+import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -15,6 +21,56 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confPasswordController = TextEditingController();
+  GlobalKey<FormState>? _formKeyLogin;
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
+    _confPasswordController.dispose();
+    super.dispose();
+  }
+
+  _postUserData() async {
+    log('User Registration');
+    UserRegistrationModel userRegistrationModel = UserRegistrationModel();
+    String name = _nameController.text.trim();
+    String email = _emailController.text.trim();
+    String phone = _phoneController.text.trim();
+    String password = _passwordController.text.trim();
+    String confPassword = _passwordController.text.trim();
+    if (name.isEmpty) {
+      showCustomSnackBar('Enter name', context);
+    } else if (email.isEmpty) {
+      showCustomSnackBar('Enter email', context);
+    } else if (phone.isEmpty) {
+      showCustomSnackBar('Enter phone', context);
+    } else if (password.length < 6) {
+      showCustomSnackBar('Password should be greater than 6', context);
+    } else if (confPassword.length < 6) {
+      showCustomSnackBar('Confirm password should be greater than 6', context);
+    } else {
+      userRegistrationModel.name = name;
+      userRegistrationModel.email = email;
+      userRegistrationModel.phoneNumber = phone;
+      userRegistrationModel.password = password;
+      userRegistrationModel.confPassword = confPassword;
+
+      await Provider.of<AuthProvider>(context, listen: false)
+          .userRegistration(context, userRegistrationModel)
+          .then((status) async {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) => SignIn()));
+      });
+    }
+  }
+
   bool isEnable = true;
   @override
   Widget build(BuildContext context) {
@@ -61,7 +117,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 8.h,
                 ),
-                NewForm('Full Name', false),
+                NewForm('Full Name', false, _nameController),
                 SizedBox(
                   height: 12.h,
                 ),
@@ -69,7 +125,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 8.h,
                 ),
-                NewForm('Enter email', false),
+                NewForm('Enter email', false, _emailController),
                 SizedBox(
                   height: 12.h,
                 ),
@@ -77,36 +133,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 8.h,
                 ),
-                Container(
-                  height: 45.h,
-                  width: double.infinity,
-                  child: IntlPhoneField(
-                    disableLengthCheck: true,
-                    flagsButtonPadding: EdgeInsets.only(left: 10),
-                    dropdownIconPosition: IconPosition.trailing,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
-                      ),
-                      hintText: 'Enter phone number',
-                      hintStyle:
-                          TextStyle(fontSize: 12.sp, color: Color(0xff6C6C6C)),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide:
-                            BorderSide(color: Color(0xff2A9D8F), width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide:
-                            BorderSide(color: Color(0xffE9F1F4), width: 1),
-                      ),
-                    ),
-                    initialCountryCode: 'US',
-                    dropdownIcon: Icon(Icons.expand_more),
-                    onChanged: (phone) {},
-                  ),
-                ),
+                NewForm('Enter phone', false, _phoneController),
                 SizedBox(
                   height: 12.h,
                 ),
@@ -114,7 +141,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 8.h,
                 ),
-                NewForm('Enter password', true),
+                NewForm('Enter password', true, _passwordController),
                 SizedBox(
                   height: 12.h,
                 ),
@@ -122,18 +149,21 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 8.h,
                 ),
-                NewForm('Confirm password', true),
+                NewForm('Confirm password', true, _confPasswordController),
                 SizedBox(
                   height: 24.h,
                 ),
-                MyButton(
-                    textColor: AppColors.white,
-                    color: AppColors.themeColor,
-                    onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => SignIn()));
-                    },
-                    text: "Sign up"),
+                Consumer<AuthProvider>(builder: (context, value, child) {
+                  return MyButton(
+                      textColor: AppColors.white,
+                      color: AppColors.themeColor,
+                      onPressed: () async {
+                        _postUserData();
+                        // Navigator.pushReplacement(context,
+                        //     MaterialPageRoute(builder: (context) => SignIn()));
+                      },
+                      text: value.isLoading ? "Loading..." : "Sign up");
+                }),
                 SizedBox(
                   height: 40.h,
                 ),
@@ -184,7 +214,8 @@ class _SignUpState extends State<SignUp> {
                     ),
                     Expanded(
                         child: Divider(
-                            thickness: 1.5, color: AppColors.colorTextWhiteLow)),
+                            thickness: 1.5,
+                            color: AppColors.colorTextWhiteLow)),
                   ],
                 ),
                 SizedBox(
@@ -271,8 +302,9 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget NewForm(String hint, bool obs) {
-    return TextField(
+  Widget NewForm(String hint, bool obs, TextEditingController? controller) {
+    return TextFormField(
+      controller: controller,
       obscureText: obs,
       decoration: InputDecoration(
           // filled: true,

@@ -39,13 +39,3 @@ class TimerProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-  // // Step 4
-  // void stopTimer() {
-  //   setState(() => countdownTimer!.cancel());
-  // }
-
-  // // Step 5
-  // void resetTimer() {
-  //   stopTimer();
-  //   setState(() => myDuration = Duration(days: 5));
-  // }

@@ -19,8 +19,7 @@ class CategoriesCard extends StatelessWidget {
     return Row(
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: 72,
@@ -30,24 +29,21 @@ class CategoriesCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: FittedBox(child: Image.asset(image)),
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child:
+                    SizedBox(height: 28, width: 28, child: Image.network(image)),
               ),
             ),
             SizedBox(
               height: 4.h,
             ),
-            Container(
-              height: 16,
-              width: 72,
-              child: FittedBox(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      color: textColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600),
-                ),
+            FittedBox(
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: textColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ],
